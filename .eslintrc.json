@@ -40,14 +40,25 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/test*.ts*", "**/*.stories.tsx", "rollup.config.json"]
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/test*.ts*",
+          "**/*.stories.tsx",
+          "rollup.config.json"
+        ]
       }
     ],
     "import/extensions": "off",
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
         "newlines-between": "always"
       }
     ],
