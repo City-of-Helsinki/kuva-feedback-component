@@ -1,0 +1,75 @@
+{
+  "name": "kuva-feedback-component",
+  "version": "0.0.0",
+  "description": "Shared component for handling feedback",
+  "main": "lib/index.js",
+  "module": "lib-esm/index.js",
+  "scripts": {
+    "start": "yarn storybook",
+    "lint": "yarn eslint \"src/**/*.{ts,tsx}\"",
+    "test": "jest",
+    "build": "rollup -c",
+    "storybook": "start-storybook -p 6006 --quiet",
+    "build-storybook": "build-storybook --loglevel error"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/City-of-Helsinki/kuva-feedback-component.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/City-of-Helsinki/kuva-feedback-component/issues"
+  },
+  "homepage": "https://github.com/City-of-Helsinki/kuva-feedback-component#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@rollup/plugin-babel": "^5.0.4",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@storybook/addon-a11y": "^6.0.0-beta.38",
+    "@storybook/addon-actions": "^6.0.0-beta.38",
+    "@storybook/addon-backgrounds": "^6.0.0-beta.38",
+    "@storybook/addon-docs": "6.0.0-beta.38",
+    "@storybook/addon-knobs": "6.0.0-beta.38",
+    "@storybook/addon-links": "^6.0.0-beta.38",
+    "@storybook/addon-storysource": "6.0.0-beta.38",
+    "@storybook/addon-viewport": "6.0.0-beta.38",
+    "@storybook/addons": "^6.0.0-beta.38",
+    "@storybook/preset-create-react-app": "2.1.2",
+    "@storybook/react": "^6.0.0-beta.38",
+    "@testing-library/react": "^10.4.3",
+    "@types/jest": "^26.0.3",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.17.1",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "jest": "^26.1.0",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "rollup": "^2.18.2",
+    "rollup-plugin-includepaths": "^0.2.3",
+    "rollup-plugin-postcss": "^3.1.2",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typescript": "^3.9.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "dependencies": {
+    "hds-react": "^0.11.3"
+  }
+}
