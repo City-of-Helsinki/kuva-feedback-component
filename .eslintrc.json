@@ -20,7 +20,7 @@
       "jsx": true
     }
   },
-  "ignorePatterns": ["*.module.css"],
+  "ignorePatterns": ["*.module.scss"],
   "settings": {
     "react": {
       "version": "detect"

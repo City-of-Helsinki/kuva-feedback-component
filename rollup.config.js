@@ -36,6 +36,7 @@ export default {
           },
         ],
       },
+      use: ["sass"],
     }),
     typescript(),
     babel({

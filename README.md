@@ -29,4 +29,3 @@ A new version of the `npm` package is automatically released when a new release 
 
 - This component uses `hds-react`, which injects some global styles for instance for headings. Be mindful of this if your application does not already use HDS. [174](https://github.com/City-of-Helsinki/helsinki-design-system/issues/174)
 - This component does not inject the Helsinki Grotesk font for you--you must add it yourself.
-- This component expects `hds-design-tokens` to be available for it in their entirety.

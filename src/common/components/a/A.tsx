@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import styles from "./a.module.css";
+import styles from "./a.module.scss";
 
 type Target = "tab";
 type Variant = "default" | "camouflaged";

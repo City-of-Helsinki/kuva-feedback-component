@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import styles from "./plainList.module.css";
+import styles from "./plainList.module.scss";
 
 interface Props {
   items: ReactNode[];

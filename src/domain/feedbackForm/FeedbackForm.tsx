@@ -4,7 +4,7 @@ import { TextInput, TextArea, Checkbox, Button, IconUpload } from "hds-react";
 import A from "../../common/components/a/A";
 import PlainList from "../../common/components/plainList/PlainList";
 import Text from "../../common/components/text/Text";
-import styles from "./feedbackForm.module.css";
+import styles from "./feedbackForm.module.scss";
 
 interface Props {
   fluid?: boolean;

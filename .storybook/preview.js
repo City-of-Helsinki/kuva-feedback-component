@@ -3,7 +3,6 @@ import { Props, Stories, Title } from "@storybook/addon-docs/dist/blocks";
 import { addParameters } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
-import "hds-design-tokens/lib/all.css";
 import "./index.css";
 
 const viewports = {

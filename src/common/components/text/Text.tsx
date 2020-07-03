@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import styles from "./text.module.css";
+import styles from "./text.module.scss";
 
 type Variant = "p" | "h1" | "h2";
 
