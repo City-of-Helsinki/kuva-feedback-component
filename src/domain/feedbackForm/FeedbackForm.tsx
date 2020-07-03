@@ -1,16 +1,26 @@
 import React from "react";
 import { TextInput, TextArea, Checkbox, Button, IconUpload } from "hds-react";
 
+import useTranslation from "../../common/hooks/useTranslation";
 import A from "../../common/components/a/A";
 import PlainList from "../../common/components/plainList/PlainList";
 import Text from "../../common/components/text/Text";
+import { Messages } from "../i18n/types";
+import defaultMessages from "../i18n/defaultMessages";
 import styles from "./feedbackForm.module.scss";
 
 interface Props {
   fluid?: boolean;
+  messages?: Messages;
+  locale: string;
 }
 
-function FeedbackForm({ fluid = false }: Props) {
+function FeedbackForm({
+  fluid = false,
+  locale,
+  messages = defaultMessages,
+}: Props) {
+  const [t] = useTranslation({ currentLocale: locale, messages });
   const [showContactDetailFields, setShowContactDetailFields] = React.useState(
     false
   );
@@ -28,28 +38,25 @@ function FeedbackForm({ fluid = false }: Props) {
         .join(" ")}
     >
       <div className={styles.feedbackFormSection}>
-        <Text variant="h1">Anna palautetta</Text>
-        <Text>
-          Anna palautetta verkkopalvelumme toiminnasta. Pyrimme vastaamaan
-          viiden arkipäivän kuluessa. Voit lähettää viestisi nimettömänä. Jos
-          haluat henkilökohtaisen vastauksen, jätä yhteistietosi.
-        </Text>
+        <Text variant="h1">{t("formTitle")}</Text>
+        <Text>{t("formDescription")}</Text>
       </div>
       <section className={styles.feedbackFormSection}>
-        <Text variant="h2">Palaute</Text>
+        <Text variant="h2">{t("feedbackSectionTitle")}</Text>
         <div className={styles.feedbackFormControlGrid}>
-          <TextInput name="title" id="title" labelText="Otsikko" />
-          <TextArea name="content" id="content" labelText="Palaute *" />
+          <TextInput name="title" id="title" labelText={t("titleFieldLabel")} />
+          <TextArea
+            name="content"
+            id="content"
+            labelText={`${t("contentFieldLabel")} *`}
+          />
         </div>
       </section>
       <section className={styles.feedbackFormSection}>
-        <Text variant="h2">Lisää liitetiedosto</Text>
-        <Text>
-          Voit lisätä halutessasi lisätä palautteeseen liitetiedoston,
-          tiedostonjen maksimikoko on 5M
-        </Text>
+        <Text variant="h2">{t("attachmentsSectionTitle")}</Text>
+        <Text>{t("attachmentsSectionDescription")}</Text>
         <Button variant="secondary" iconLeft={<IconUpload />}>
-          Lisää tiedosto
+          {t("doAddFile")}
         </Button>
       </section>
       <div className={styles.feedbackFormSection}>
@@ -58,64 +65,50 @@ function FeedbackForm({ fluid = false }: Props) {
           id="want-reply"
           checked={wantReplyValue}
           onChange={handleWantReplyToggle}
-          labelText="Haluan vastauksen palautteeseeni"
+          labelText={t("userWillsReplyLabel")}
         />
       </div>
       {showContactDetailFields && (
         <section className={styles.feedbackFormSection}>
-          <Text variant="h2">Yhteystietosi</Text>
+          <Text variant="h2">{t("contactDetailsSectionTitle")}</Text>
           <div className={styles.feedbackFormControlGrid}>
             <TextInput
               name="user-name"
               id="user-name"
-              labelText="Nimi tai nimimerkki"
+              labelText={t("userNameFieldLabel")}
             />
             <TextInput
               name="user-email"
               id="user-email"
-              labelText="Sähköpostiosoite"
+              labelText={t("userEmailFieldLabel")}
             />
           </div>
         </section>
       )}
       <div className={styles.feedbackFormSection}>
-        <Button type="submit">Lähetä palaute</Button>
+        <Button type="submit">{t("doSendFeedback")}</Button>
       </div>
       <div className={styles.feedbackFormSection}>
-        <Text>
-          Koska tämän palautelomakkeen tietoturvaa ei ole varmistettu,
-          palautteessanne ei ole syytä mainita esim. henkilötunnuksia,
-          pankkitilin numeroja tai varallisuutta koskevia tietoja eikä myöskään
-          arkaluontoisia tietoja kuten tietoja terveydentilasta tai asiakkuuteen
-          liittyviä tietoja
-        </Text>
-        <Text>
-          Sähköinen viesti toimitetaan viranomaiselle lähettäjän omalla
-          vastuulla (Laki sähköisestä asioinnista viranomaistoiminnassa
-          24.1.2003/13, 8 §). Jos asiakirjan toimittamiselle on asetettu
-          määräaika, lähettäjän on huolehdittava siitä, että asiakirja saapuu
-          viranomaiseen määräajassa (Hallintolaki 6.6.2003/434, 17 §).
-        </Text>
-        <Text>
-          Tämän vuoksi palauteviestinä ei tule lähettää esimerkiksi
-          lakisääteisiä muistutuksia, kanteluja tai oikaisuvaatimuksia
-          päätöksistä.
-        </Text>
+        {t("formPrivacyWarning")
+          .split("\n")
+          .map((paragraph) => (
+            <Text key={paragraph.slice(0, 8)}>{paragraph}</Text>
+          ))}
         <PlainList
           items={[
             <A
-              href="https://www.hel.fi/rekisteriseloste"
+              href={t("formPrivacyPolicyLink")}
               target="tab"
               variant="camouflaged"
             >
-              Palautejärjestelmän rekisteriseloste
+              {t("formPrivacyPolicyLabel")}
             </A>,
             <A
-              href="https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/ohjeita-palautteesta/"
+              href={t("formInstructionLink")}
               target="tab"
               variant="camouflaged"
             >
-              Tietoa palautteen antamisesta
+              {t("formInstructionLabel")}
             </A>,
           ]}
         />

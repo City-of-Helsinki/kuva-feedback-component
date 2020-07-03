@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs, select } from "@storybook/addon-knobs";
 import {
   Props,
   Stories,
@@ -30,10 +30,21 @@ export default {
   },
 };
 
-export const Default = () => <FeedbackForm />;
+export const Default = () => <FeedbackForm locale="fi" />;
 
 export const Playground = () => {
-  return <FeedbackForm />;
+  const locale = select(
+    "Locale",
+    {
+      Undefined: undefined,
+      Finnish: "fi",
+      Swedish: "sv",
+      English: "en",
+    },
+    undefined
+  );
+
+  return <FeedbackForm locale={locale} />;
 };
 
 Playground.story = {

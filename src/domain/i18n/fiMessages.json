@@ -1,0 +1,20 @@
+{
+  "formTitle": "Anna palautetta",
+  "formDescription": "Anna palautetta verkkopalvelumme toiminnasta. Pyrimme vastaamaan viiden arkipäivän kuluessa. Voit lähettää viestisi nimettömänä. Jos haluat henkilökohtaisen vastauksen, jätä yhteistietosi.",
+  "feedbackSectionTitle": "Palaute",
+  "titleFieldLabel": "Otsikko",
+  "contentFieldLabel": "Palaute",
+  "attachmentsSectionTitle": "Lisää liitetiedosto",
+  "attachmentsSectionDescription": "Voit lisätä halutessasi lisätä palautteeseen liitetiedoston, tiedostonjen maksimikoko on 5M",
+  "doAddFile": "Lisää tiedosto",
+  "userWillsReplyLabel": "Haluan vastauksen palautteeseeni",
+  "contactDetailsSectionTitle": "Yhteystietosi",
+  "userNameFieldLabel": "Nimi tai nimimerkki",
+  "userEmailFieldLabel": "Sähköpostiosoite",
+  "doSendFeedback": "Lähetä palaute",
+  "formPrivacyWarning": "Koska tämän palautelomakkeen tietoturvaa ei ole varmistettu, palautteessanne ei ole syytä mainita esim. henkilötunnuksia, pankkitilin numeroja tai varallisuutta koskevia tietoja eikä myöskään arkaluontoisia tietoja kuten tietoja terveydentilasta tai asiakkuuteen liittyviä tietoja\nSähköinen viesti toimitetaan viranomaiselle lähettäjän omalla vastuulla (Laki sähköisestä asioinnista viranomaistoiminnassa 24.1.2003/13, 8 §). Jos asiakirjan toimittamiselle on asetettu määräaika, lähettäjän on huolehdittava siitä, että asiakirja saapuu viranomaiseen määräajassa (Hallintolaki 6.6.2003/434, 17 §).\nTämän vuoksi palauteviestinä ei tule lähettää esimerkiksi lakisääteisiä muistutuksia, kanteluja tai oikaisuvaatimuksia päätöksistä.",
+  "formPrivacyPolicyLink": "https://www.hel.fi/rekisteriseloste",
+  "formPrivacyPolicyLabel": "Palautejärjestelmän rekisteriseloste",
+  "formInstructionLink": "https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/ohjeita-palautteesta/",
+  "formInstructionLabel": "Tietoa palautteen antamisesta"
+}

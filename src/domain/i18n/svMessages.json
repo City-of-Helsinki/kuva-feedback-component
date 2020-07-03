@@ -1,0 +1,20 @@
+{
+  "formTitle": "SV_formTitle",
+  "formDescription": "SV_formDescription",
+  "feedbackSectionTitle": "SV_feedbackSectionTitle",
+  "titleFieldLabel": "SV_titleFieldLabel",
+  "contentFieldLabel": "SV_contentFieldLabel",
+  "attachmentsSectionTitle": "SV_attachmentsSectionTitle",
+  "attachmentsSectionDescription": "SV_attachmentsSectionDescription",
+  "doAddFile": "SV_doAddFile",
+  "userWillsReplyLabel": "SV_userWillsReplyLabel",
+  "contactDetailsSectionTitle": "SV_contactDetailsSectionTitle",
+  "userNameFieldLabel": "SV_userNameFieldLabel",
+  "userEmailFieldLabel": "SV_userEmailFieldLabel",
+  "doSendFeedback": "SV_doSendFeedback",
+  "formPrivacyWarning": "SV_formPrivacyWarning",
+  "formPrivacyPolicyLink": "SV_formPrivacyPolicyLink",
+  "formPrivacyPolicyLabel": "SV_formPrivacyPolicyLabel",
+  "formInstructionLink": "SV_formInstructionLink",
+  "formInstructionLabel": "SV_formInstructionLabel"
+}

@@ -51,5 +51,6 @@ export default {
     "react-spring/renderprops.cjs",
     "lodash.uniqueid",
     "lodash.isequal",
+    "lodash.get",
   ],
 };

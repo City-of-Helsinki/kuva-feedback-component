@@ -4,7 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import FeedbackForm from "../FeedbackForm";
 
 describe("<FeedbackForm />", () => {
-  const getWrapper = () => render(<FeedbackForm />);
+  const getWrapper = () => render(<FeedbackForm locale="fi" />);
 
   it("user can input expected information", () => {
     const fields = [
