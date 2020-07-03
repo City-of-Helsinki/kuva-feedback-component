@@ -57,6 +57,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "4.0.0",
     "git-rev-sync": "^2.0.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
@@ -73,6 +74,7 @@
     "react-dom": "^16.8.0"
   },
   "dependencies": {
+    "hds-design-tokens": "^0.11.3",
     "hds-react": "^0.11.3"
   }
 }

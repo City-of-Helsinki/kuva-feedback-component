@@ -44,5 +44,11 @@ export default {
       extensions,
     }),
   ],
-  external: ["react", "react-dom"],
+  external: [
+    "react",
+    "react-dom",
+    "react-spring/renderprops.cjs",
+    "lodash.uniqueid",
+    "lodash.isequal",
+  ],
 };

@@ -7,15 +7,12 @@ import {
   Title,
 } from "@storybook/addon-docs/dist/blocks";
 
-import TestComponent from "./TestComponent";
+import FeedbackForm from "./FeedbackForm";
 
 export default {
-  component: TestComponent,
-  title: "test-component",
-  decorators: [
-    withKnobs,
-    (storyFn) => <div style={{ maxWidth: "400px" }}>{storyFn()}</div>,
-  ],
+  component: FeedbackForm,
+  title: "Feedback Form",
+  decorators: [withKnobs, (storyFn) => <div>{storyFn()}</div>],
   parameters: {
     docs: {
       page: () => (
@@ -33,10 +30,10 @@ export default {
   },
 };
 
-export const Default = () => <TestComponent />;
+export const Default = () => <FeedbackForm />;
 
 export const Playground = () => {
-  return <TestComponent />;
+  return <FeedbackForm />;
 };
 
 Playground.story = {

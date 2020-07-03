@@ -1,0 +1,19 @@
+.feedbackFormContainer {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: var(--spacing-3-xl);
+  padding-top: var(--spacing-xl);
+}
+.feedbackFormContainer.maxWidth {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.feedbackFormSection {
+}
+
+.feedbackFormControlGrid {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: var(--spacing-m);
+}

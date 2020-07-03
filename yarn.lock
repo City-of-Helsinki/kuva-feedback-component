@@ -8133,6 +8133,11 @@ hds-core@0.11.3:
   resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-0.11.3.tgz#db741a527c0485b010bc54cf70bd74edfd30aca0"
   integrity sha512-bC2gdcX7HCPk4xKuXKGkYMUesx0YF5EOD8el8mTw+3vZthViXV4Rv8EZjc3T9y5lXV4aBE6ePvuD8fY1r04fJQ==
 
+hds-design-tokens@^0.11.3:
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-0.11.3.tgz#fd024a2a435d7af138e4e3cb8b317857fd038cf3"
+  integrity sha512-GEspz+yzkZwzpsJQImVomFTgXNjteJYePu2FD585Jg77pof0ekvdOGbwzR9WzAdoD+BtJSL/L90lrhITdUkBew==
+
 hds-react@^0.11.3:
   version "0.11.3"
   resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-0.11.3.tgz#11e8e673dbab4ade5acb4451f4bbbe32da1e02bf"
@@ -8390,7 +8395,7 @@ icss-utils@^4.0.0, icss-utils@^4.1.1:
   dependencies:
     postcss "^7.0.14"
 
-identity-obj-proxy@3.0.0:
+identity-obj-proxy@3.0.0, identity-obj-proxy@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
   integrity sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=
