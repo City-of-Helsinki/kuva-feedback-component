@@ -36,12 +36,11 @@ export const Playground = () => {
   const locale = select(
     "Locale",
     {
-      Undefined: undefined,
       Finnish: "fi",
       Swedish: "sv",
       English: "en",
     },
-    undefined
+    "fi"
   );
 
   return <FeedbackForm locale={locale} />;
