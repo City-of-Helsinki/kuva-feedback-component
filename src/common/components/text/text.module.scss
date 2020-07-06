@@ -1,0 +1,30 @@
+@import '~hds-design-tokens/lib/all.scss';
+
+.h1 {
+  font-size: $fontsize-h-2;
+  color: $color-black-90;
+}
+
+.h2 {
+  margin-bottom: $spacing-m;
+
+  font-size: $fontsize-h-3;
+  color: $color-black-90;
+}
+
+.p {
+  font-size: $fontsize-body-medium;
+  line-height: $lineheight-l;
+  color: $color-black-80;
+}
+
+.h1:first-child,
+.h2:first-child,
+.p:first-child {
+  margin-top: 0;
+}
+.h1:last-child,
+.h2:last-child,
+.p:last-child {
+  margin-bottom: 0;
+}

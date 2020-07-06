@@ -1,0 +1,14 @@
+@import '~hds-design-tokens/lib/all.scss';
+
+.a {
+  padding: $spacing-4-xs;
+
+  font-size: $fontsize-body-medium;
+  text-decoration: none;
+
+  border-bottom: 1px solid currentColor;
+
+  &.camouflaged {
+    color: $color-black-80;
+  }
+}

@@ -1,0 +1,11 @@
+@import '~hds-design-tokens/lib/all.scss';
+
+.ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.li:not(:last-child) {
+  margin-bottom: $spacing-2-xs;
+}

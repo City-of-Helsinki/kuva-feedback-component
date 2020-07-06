@@ -1,0 +1,21 @@
+@import '~hds-design-tokens/lib/all.scss';
+
+.feedbackForm {
+  &Container {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: $spacing-3-xl;
+    padding-top: $spacing-xl;
+
+    &.maxWidth {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+  }
+
+  &ControlGrid {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: $spacing-m;
+  }
+}
