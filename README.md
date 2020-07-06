@@ -1,5 +1,7 @@
 # kuva-feedback-component
 
+**NOTE:** This project is currently being released in a temporary npm package until we have a first release candidate ready for publishing.
+
 ## Commands
 
 | Name         | Purpose                                                                                                  | Useful Options                |
@@ -21,4 +23,4 @@ This project uses `rollup` for its final bundle.
 
 ## Releasing new versions
 
-A new version of the `npm` package is automatically released when a new release is created in GitHub.
+A new version of the `npm` package is automatically released when a new release is created in GitHub. Additionally, a new canary release is created after each new push into develop.

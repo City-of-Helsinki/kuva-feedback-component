@@ -9,4 +9,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Initial documentation
-- Add development pipeline (eslint, prettier, storybook, jest, travis, rollup)
+- Development pipeline (eslint, prettier, storybook, jest, travis, rollup)
+- Publish pipeline
