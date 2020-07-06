@@ -2,6 +2,7 @@
 import babel from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import includePaths from "rollup-plugin-includepaths";
 import postcss from "rollup-plugin-postcss";
 import typescript from "rollup-plugin-typescript2";
@@ -26,6 +27,7 @@ export default {
     commonjs({
       include: "../../node_modules/**",
     }),
+    json(),
     postcss({
       modules: true,
       minimize: {
@@ -51,5 +53,6 @@ export default {
     "react-spring/renderprops.cjs",
     "lodash.uniqueid",
     "lodash.isequal",
+    "lodash.get",
   ],
 };

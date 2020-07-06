@@ -12,3 +12,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Development pipeline (eslint, prettier, storybook, jest, travis, rollup)
 - Publish pipeline
 - Initial form elements
+- Support for basic internationalization
