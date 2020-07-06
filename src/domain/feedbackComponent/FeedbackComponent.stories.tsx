@@ -7,11 +7,11 @@ import {
   Title,
 } from "@storybook/addon-docs/dist/blocks";
 
-import FeedbackForm from "./FeedbackForm";
+import FeedbackComponent from "./FeedbackComponent";
 
 export default {
-  component: FeedbackForm,
-  title: "Feedback Form",
+  component: FeedbackComponent,
+  title: "Feedback component",
   decorators: [withKnobs, (storyFn) => <div>{storyFn()}</div>],
   parameters: {
     docs: {
@@ -30,7 +30,7 @@ export default {
   },
 };
 
-export const Default = () => <FeedbackForm locale="fi" />;
+export const Default = () => <FeedbackComponent locale="fi" />;
 
 export const Playground = () => {
   const locale = select(
@@ -43,7 +43,7 @@ export const Playground = () => {
     "fi"
   );
 
-  return <FeedbackForm locale={locale} />;
+  return <FeedbackComponent locale={locale} />;
 };
 
 Playground.story = {

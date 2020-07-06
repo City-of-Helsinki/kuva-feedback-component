@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 
-import FeedbackForm from "../FeedbackForm";
+import FeedbackComponent from "../FeedbackComponent";
 
-describe("<FeedbackForm />", () => {
-  const getWrapper = () => render(<FeedbackForm locale="fi" />);
+describe("<FeedbackComponent />", () => {
+  const getWrapper = () => render(<FeedbackComponent locale="fi" />);
 
   it("user can input expected information", () => {
     const fields = [
@@ -13,13 +13,17 @@ describe("<FeedbackForm />", () => {
         value: "I can't delete my profile",
       },
       {
-        label: "Palaute *",
+        label: "Palaute*",
         value:
           "I use a screen reader to access the application and when I choose to delete my profile nothing happens!",
       },
       {
-        label: "Nimi tai nimimerkki",
-        value: "Nikica Miletić",
+        label: "Etunimi tai nimimerkki",
+        value: "Nikica",
+      },
+      {
+        label: "Sukunimi",
+        value: "Miletić",
       },
       {
         label: "Sähköpostiosoite",
