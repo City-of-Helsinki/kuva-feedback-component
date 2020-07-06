@@ -11,6 +11,7 @@
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006 --quiet",
     "build-storybook": "build-storybook --loglevel error",
+    "serve-storybook": "node ./storybook-server/index.js",
     "publish-canary": "node ./scripts/publish-canary.js"
   },
   "repository": {
@@ -56,6 +57,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "4.0.0",
+    "express": "^4.17.1",
     "git-rev-sync": "^2.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
