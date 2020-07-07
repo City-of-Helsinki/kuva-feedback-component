@@ -2,6 +2,9 @@
 
 **NOTE:** This project is currently being released in a temporary npm package until we have a first release candidate ready for publishing.
 
+Storybook for current release: [http://kuva-feedback-component.prod.kuva.hel.ninja/](http://kuva-feedback-component.prod.kuva.hel.ninja/)
+Storybook for current `develop`: [http://kuva-feedback-component.test.kuva.hel.ninja/](http://kuva-feedback-component.test.kuva.hel.ninja/)
+
 ## Commands
 
 | Name         | Purpose                                                                                                  | Useful Options                |
