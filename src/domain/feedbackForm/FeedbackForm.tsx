@@ -31,8 +31,6 @@ function FeedbackForm({
     setShowContactDetailFields((value) => !value);
   };
 
-  const wantReplyValue = showContactDetailFields;
-
   return (
     <Formik
       initialValues={initialValues}
@@ -83,7 +81,7 @@ function FeedbackForm({
               <Checkbox
                 name="want-reply"
                 id="want-reply"
-                checked={wantReplyValue}
+                checked={showContactDetailFields}
                 onChange={handleWantReplyToggle}
                 labelText={t("form.toggle.wantReply")}
               />
