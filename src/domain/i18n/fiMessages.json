@@ -4,7 +4,7 @@
   "form.section.feedback.title": "Palaute",
   "field.title.label": "Otsikko",
   "field.description.label": "Palaute",
-  "field.description.error.min": "Palautteen on oltava vähintään 5 merkkiä pitkä",
+  "field.description.error.min": "Palautteen on oltava vähintään 10 merkkiä pitkä",
   "field.description.error.max": "Palaute ei saa olla yli 5000 merkkiä pitkä",
   "field.description.error.required": "Palaute on pakollinen kenttä",
   "form.section.attachments.title": "Lisää liitetiedosto",
