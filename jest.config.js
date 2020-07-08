@@ -135,7 +135,11 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-jsdom",
+  // We have react-script as a dependency for our storybook build. This
+  // package forces our jsdom version into an older one, regardless of
+  // jest being at version 26. To circumvent, we are telling jest to
+  // use jsdom sixteen here.
+  testEnvironment: "jest-environment-jsdom-sixteen",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

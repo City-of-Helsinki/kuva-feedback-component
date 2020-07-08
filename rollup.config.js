@@ -54,6 +54,7 @@ export default {
     "lodash.uniqueid",
     "lodash.isequal",
     "formik",
+    "whatwg-fetch",
     "yup",
   ],
 };

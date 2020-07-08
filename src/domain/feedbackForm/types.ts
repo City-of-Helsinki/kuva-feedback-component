@@ -1,7 +1,7 @@
 export interface FormValues {
   title: string | null;
   description: string;
-  media: Array<unknown> | null;
+  media: string | null;
   firstName: string | null;
   lastName: string | null;
   email: string | null;

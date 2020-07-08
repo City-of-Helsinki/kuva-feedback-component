@@ -3,5 +3,13 @@
     "@babel/preset-env",
     "@babel/preset-react",
     "@babel/preset-typescript"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties"
+      ]
+    }
+  }
 }
