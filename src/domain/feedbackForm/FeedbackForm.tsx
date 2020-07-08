@@ -5,7 +5,7 @@ import { Formik, Form } from "formik";
 import A from "../../common/components/a/A";
 import PlainList from "../../common/components/plainList/PlainList";
 import Text from "../../common/components/text/Text";
-import TextInput from "../../common/components/formikWrappers/Textinput";
+import TextInput from "../../common/components/formikWrappers/TextInput";
 import TextArea from "../../common/components/formikWrappers/TextArea";
 import defaultInitialValues from "./defaultInitialValues";
 import useTranslation from "../i18n/useTranslation";
