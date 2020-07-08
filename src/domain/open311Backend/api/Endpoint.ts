@@ -52,9 +52,9 @@ class Endpoint<DirtyContent extends Dirty, Content extends Clean, Responses> {
   }
 
   async call(message: Message<DirtyContent>): Promise<Responses> {
-    const cleanMessage = clean<DirtyContent, Content>(message);
-    const validatesMessage = await this.validate(cleanMessage);
-    const transformedMessage = this.transform(validatesMessage);
+    const cleanedMessage = clean<DirtyContent, Content>(message);
+    const validatedMessage = await this.validate(cleanedMessage);
+    const transformedMessage = this.transform(validatedMessage);
 
     return this.makeRequest(transformedMessage);
   }
