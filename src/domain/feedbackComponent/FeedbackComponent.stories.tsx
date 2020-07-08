@@ -66,6 +66,19 @@ export const SubmitSuccess = () => (
   <FeedbackComponent locale="fi" onSubmit={() => Promise.resolve()} />
 );
 
+export const PreFilled = () => (
+  <FeedbackComponent
+    locale="fi"
+    onSubmit={() => Promise.resolve()}
+    initialValues={{
+      title: "Title of feedback",
+      description: "Content of feedback",
+      firstName: "Alessa",
+      lastName: "Marvina Gutierrez",
+    }}
+  />
+);
+
 export const Playground = () => {
   const locale = select(
     "Locale",

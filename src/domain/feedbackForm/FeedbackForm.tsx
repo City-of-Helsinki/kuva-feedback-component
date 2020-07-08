@@ -16,13 +16,13 @@ import styles from "./feedbackForm.module.scss";
 
 export interface Props {
   fluid?: boolean;
-  initialValues?: FormValues;
+  initialValues?: Partial<FormValues>;
   onSubmit: (values: FormValues) => Promise<unknown>;
 }
 
 function FeedbackForm({
   fluid = false,
-  initialValues = defaultInitialValues,
+  initialValues: externalInitialValues,
   onSubmit,
 }: Props) {
   const [t] = useTranslation();
@@ -32,6 +32,11 @@ function FeedbackForm({
 
   const handleWantReplyToggle = () => {
     setShowContactDetailFields((value) => !value);
+  };
+
+  const initialValues = {
+    ...defaultInitialValues,
+    ...externalInitialValues,
   };
 
   return (
