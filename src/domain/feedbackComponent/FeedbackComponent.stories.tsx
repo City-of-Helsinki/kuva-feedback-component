@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, select, boolean, object } from "@storybook/addon-knobs";
+import { withKnobs, select, object } from "@storybook/addon-knobs";
 import {
   Props,
   Stories,
@@ -8,6 +8,7 @@ import {
 } from "@storybook/addon-docs/dist/blocks";
 import { action } from "@storybook/addon-actions";
 
+import hdsTheme from "../hdsTheme/hdsTheme";
 import FeedbackComponent from "./FeedbackComponent";
 
 // Sourced from https://dev.hel.fi/open311-test/v1/discovery.json
@@ -79,6 +80,37 @@ export const PreFilled = () => (
   />
 );
 
+const customTheme = {
+  ...hdsTheme,
+  Page: (props) => (
+    <div
+      {...props}
+      style={{
+        fontFamily: '"Comic Sans MS", cursive, sans-serif',
+      }}
+    />
+  ),
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  TextInput: ({ labelText, helperText = "", invalid, ...rest }) => (
+    <>
+      <label htmlFor={rest.id}>{labelText}</label>
+      <input type="text" {...rest} />
+    </>
+  ),
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  TextArea: ({ labelText, helperText = "", invalid, ...rest }) => (
+    <>
+      <label htmlFor={rest.id}>{labelText}</label>
+      <textarea {...rest} />
+    </>
+  ),
+};
+
+const themes = {
+  hds: hdsTheme,
+  custom: customTheme,
+};
+
 export const Playground = () => {
   const locale = select(
     "Locale",
@@ -89,13 +121,20 @@ export const Playground = () => {
     },
     "fi"
   );
-  const fluid = boolean("Fluid", false);
+  const theme = select(
+    "Theme",
+    {
+      HDS: "hds",
+      Custom: "custom",
+    },
+    "hds"
+  );
 
   return (
     <FeedbackComponent
       locale={locale}
       onSubmit={() => Promise.resolve()}
-      fluid={fluid}
+      theme={themes[theme]}
     />
   );
 };
