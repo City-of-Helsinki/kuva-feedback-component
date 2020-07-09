@@ -1,29 +1,23 @@
 import React from "react";
-import { Button, Checkbox, IconUpload } from "hds-react";
 import { Formik, Form } from "formik";
 
-import A from "../../common/components/a/A";
-import PlainList from "../../common/components/plainList/PlainList";
-import Text from "../../common/components/text/Text";
-import TextInput from "../../common/components/formikWrappers/TextInput";
-import TextArea from "../../common/components/formikWrappers/TextArea";
-import ErrorBox from "../../common/components/errorBox/ErrorBox";
+import Input from "../../common/components/formikWrappers/Input";
 import defaultInitialValues from "./defaultInitialValues";
 import useTranslation from "../i18n/useTranslation";
-import { FormValues } from "./types";
+import hdsTheme from "../hdsTheme/hdsTheme";
+import { FormValues, FormTheme } from "./types";
 import schema from "./schema";
-import styles from "./feedbackForm.module.scss";
 
 export interface Props {
-  fluid?: boolean;
-  initialValues?: FormValues;
+  initialValues?: Partial<FormValues>;
   onSubmit: (values: FormValues) => Promise<unknown>;
+  theme?: FormTheme;
 }
 
 function FeedbackForm({
-  fluid = false,
-  initialValues = defaultInitialValues,
+  initialValues: externalInitialValues,
   onSubmit,
+  theme: Theme = hdsTheme,
 }: Props) {
   const [t] = useTranslation();
   const [showContactDetailFields, setShowContactDetailFields] = React.useState(
@@ -32,6 +26,11 @@ function FeedbackForm({
 
   const handleWantReplyToggle = () => {
     setShowContactDetailFields((value) => !value);
+  };
+
+  const initialValues = {
+    ...defaultInitialValues,
+    ...externalInitialValues,
   };
 
   return (
@@ -57,118 +56,121 @@ function FeedbackForm({
       }}
     >
       {({ status = {} }) => (
-        <div
-          className={[styles.feedbackFormPage, !fluid ? styles.maxWidth : null]
-            .filter((style) => style)
-            .join(" ")}
-        >
+        <Theme.Page>
           {status.isSubmitSuccess ? (
             <>
-              <Text variant="h1">{t("form.title.success")}</Text>
-              <Text>{t("form.description.success")}</Text>
+              <Theme.TextH1>{t("form.title.success")}</Theme.TextH1>
+              <Theme.TextP>{t("form.description.success")}</Theme.TextP>
             </>
           ) : (
             <Form noValidate>
-              <div className={styles.feedbackFormContainer}>
-                <div className={styles.feedbackFormSection}>
-                  <Text variant="h1">{t("form.title")}</Text>
-                  <Text>{t("form.description")}</Text>
-                </div>
-                <section className={styles.feedbackFormSection}>
-                  <Text variant="h2">{t("form.section.feedback.title")}</Text>
-                  <div className={styles.feedbackFormControlGrid}>
-                    <TextInput
+              <Theme.Container>
+                <Theme.Section>
+                  <Theme.TextH1>{t("form.title")}</Theme.TextH1>
+                  <Theme.TextP>{t("form.description")}</Theme.TextP>
+                </Theme.Section>
+                <Theme.LabeledSection>
+                  <Theme.TextH2>
+                    {t("form.section.feedback.title")}
+                  </Theme.TextH2>
+                  <Theme.FieldGrid>
+                    <Input
+                      component={Theme.TextInput}
                       name="title"
                       id="title"
                       labelText={t("field.title.label")}
                     />
-                    <TextArea
+                    <Input
+                      component={Theme.TextArea}
                       name="description"
                       id="description"
                       labelText={`${t("field.description.label")}`}
                       required
                     />
-                  </div>
-                </section>
-                <section className={styles.feedbackFormSection}>
-                  <Text variant="h2">
+                  </Theme.FieldGrid>
+                </Theme.LabeledSection>
+                <Theme.LabeledSection>
+                  <Theme.TextH2>
                     {t("form.section.attachments.title")}
-                  </Text>
-                  <Text>{t("form.section.attachments.description")}</Text>
-                  <Button variant="secondary" iconLeft={<IconUpload />}>
+                  </Theme.TextH2>
+                  <Theme.TextP>
+                    {t("form.section.attachments.description")}
+                  </Theme.TextP>
+                  <Theme.ButtonAddFile>
                     {t("form.section.attachments.doAddFile")}
-                  </Button>
-                </section>
-                <div className={styles.feedbackFormSection}>
-                  <Checkbox
+                  </Theme.ButtonAddFile>
+                </Theme.LabeledSection>
+                <Theme.Section>
+                  <Theme.Checkbox
                     name="want-reply"
                     id="want-reply"
                     checked={showContactDetailFields}
                     onChange={handleWantReplyToggle}
                     labelText={t("form.toggle.wantReply")}
                   />
-                </div>
+                </Theme.Section>
                 {showContactDetailFields && (
-                  <section className={styles.feedbackFormSection}>
-                    <Text variant="h2">
+                  <Theme.LabeledSection>
+                    <Theme.TextH2>
                       {t("form.section.contactDetails.title")}
-                    </Text>
-                    <div className={styles.feedbackFormControlGrid}>
-                      <TextInput
+                    </Theme.TextH2>
+                    <Theme.FieldGrid>
+                      <Input
+                        component={Theme.TextInput}
                         name="firstName"
                         id="firstName"
                         labelText={t("field.firstName.label")}
                       />
-                      <TextInput
+                      <Input
+                        component={Theme.TextInput}
                         name="lastName"
                         id="lastName"
                         labelText={t("field.lastName.label")}
                       />
-                      <TextInput
+                      <Input
+                        component={Theme.TextInput}
                         name="email"
                         id="email"
                         labelText={t("field.email.label")}
                       />
-                    </div>
-                  </section>
+                    </Theme.FieldGrid>
+                  </Theme.LabeledSection>
                 )}
                 {status.isSubmitError && (
-                  <ErrorBox label={t("form.doSendFeedback.error")}>
+                  <Theme.ErrorBox label={t("form.doSendFeedback.error")}>
                     {status.errorTechnicalDescription}
-                  </ErrorBox>
+                  </Theme.ErrorBox>
                 )}
-                <div className={styles.feedbackFormSection}>
-                  <Button type="submit">{t("form.doSendFeedback")}</Button>
-                </div>
-                <div className={styles.feedbackFormSection}>
+                <Theme.Section>
+                  <Theme.ButtonSubmit>
+                    {t("form.doSendFeedback")}
+                  </Theme.ButtonSubmit>
+                </Theme.Section>
+                <Theme.Section>
                   {t("form.privacyWarning")
                     .split("\n")
                     .map((paragraph) => (
-                      <Text key={paragraph.slice(0, 8)}>{paragraph}</Text>
+                      <Theme.TextP key={paragraph.slice(0, 8)}>
+                        {paragraph}
+                      </Theme.TextP>
                     ))}
-                  <PlainList
+                  <Theme.PlainList
                     items={[
-                      <A
-                        href={t("form.privacyPolicy.link")}
-                        target="tab"
-                        variant="camouflaged"
-                      >
+                      <Theme.A href={t("form.privacyPolicy.link")}>
                         {t("form.privacyPolicy.label")}
-                      </A>,
-                      <A
-                        href={t("form.instruction.link")}
-                        target="tab"
-                        variant="camouflaged"
-                      >
+                      </Theme.A>,
+                      <Theme.A href={t("form.instruction.link")}>
                         {t("form.instruction.label")}
-                      </A>,
+                      </Theme.A>,
                     ]}
+                    // eslint-disable-next-line react/no-children-prop
+                    children={undefined}
                   />
-                </div>
-              </div>
+                </Theme.Section>
+              </Theme.Container>
             </Form>
           )}
-        </div>
+        </Theme.Page>
       )}
     </Formik>
   );

@@ -1,11 +1,11 @@
-import React, { ReactElement } from "react";
+import React, { ReactNode } from "react";
 
 import styles from "./text.module.scss";
 
 type Variant = "p" | "h1" | "h2";
 
 interface Props {
-  children: ReactElement | string;
+  children?: ReactNode;
   variant?: Variant;
 }
 

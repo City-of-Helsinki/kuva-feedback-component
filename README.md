@@ -39,17 +39,21 @@ A new version of the `npm` package is automatically released when a new release 
 
 **Props**
 
-| Prop        | Description                                                                                                                                                                                      | Default           |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
-| `locale`    | Controls the current language of the component.                                                                                                                                                  |                   |
-| `messages?` | Controls the messages that are used for translations.                                                                                                                                            | `defaultMessages` |
-| `fluid?`    | By default the component has a max width set in accordance with HDS. If you want to ignore it, you can set this option to true, in which case the form will span with no `max-width` limitation. | `false`           |
-| `backendConfig?`    | The component provides a default backend that integrates it into Helsinki's Open311 based feedback system. If you want to use it, you have to provide this configuration object. You can find an example from storybook. |            |
-| `onSubmit?`    | If you do not want to use the default backend, you can use a custom one by providing `onSubmit`. |            |
+| Prop             | Description                                                                                                                                                                                                                            | Default           |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `locale`         | Controls the current language of the component.                                                                                                                                                                                        |                   |
+| `messages?`      | Controls the messages that are used for translations.                                                                                                                                                                                  | `defaultMessages` |
+| `backendConfig?` | The component provides a default backend that integrates it into Helsinki's Open311 based feedback system. If you want to use it, you have to provide this configuration object. You can find an example from storybook.               |                   |
+| `onSubmit?`      | If you do not want to use the default backend, you can use a custom one by providing `onSubmit`.                                                                                                                                       |                   |
+| `theme?`         | By default this component is themed to match with HDS. If you do not want that, or you need to tweak the component due to some other reason, you can do it by providing a theme. You can use the `hdsTheme` as a basis for your tweak. | `hdsTheme`        |
 
 ### `defaultMessages`
 
 The set of translations that the `FeedbackForm` component uses by default.
+
+### `hdsTheme`
+
+An object containing a set of components that are styled according to HDS.
 
 ## Internationalization
 

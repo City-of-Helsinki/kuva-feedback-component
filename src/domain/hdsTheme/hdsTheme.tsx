@@ -1,0 +1,43 @@
+import React from "react";
+import { Button, IconUpload, TextInput, TextArea, Checkbox } from "hds-react";
+
+import A from "../../common/components/a/A";
+import PlainList from "../../common/components/plainList/PlainList";
+import Text from "../../common/components/text/Text";
+import ErrorBox from "../../common/components/errorBox/ErrorBox";
+import { FormTheme } from "../feedbackForm/types";
+import styles from "./hdsTheme.module.scss";
+
+const hdsTheme: FormTheme = {
+  Page: (props) => (
+    <div
+      className={[styles.feedbackFormPage, styles.maxWidth].join(" ")}
+      {...props}
+    />
+  ),
+  Container: (props) => (
+    <div className={styles.feedbackFormContainer} {...props} />
+  ),
+  LabeledSection: (props) => (
+    <section className={styles.feedbackFormSection} {...props} />
+  ),
+  Section: (props) => <div className={styles.feedbackFormSection} {...props} />,
+  FieldGrid: (props) => (
+    <div className={styles.feedbackFormControlGrid} {...props} />
+  ),
+  ErrorBox: (props) => <ErrorBox {...props} />,
+  PlainList: (props) => <PlainList {...props} />,
+  TextInput: (props) => <TextInput {...props} />,
+  TextArea: (props) => <TextArea {...props} />,
+  Checkbox: (props) => <Checkbox {...props} />,
+  ButtonAddFile: (props) => (
+    <Button variant="secondary" iconLeft={<IconUpload />} {...props} />
+  ),
+  ButtonSubmit: (props) => <Button type="submit" {...props} />,
+  TextH1: (props) => <Text variant="h1" {...props} />,
+  TextH2: (props) => <Text variant="h2" {...props} />,
+  TextP: (props) => <Text {...props} />,
+  A: (props) => <A target="tab" variant="camouflaged" {...props} />,
+};
+
+export default hdsTheme;
