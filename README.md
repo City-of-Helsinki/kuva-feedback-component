@@ -44,6 +44,8 @@ A new version of the `npm` package is automatically released when a new release 
 | `locale`    | Controls the current language of the component.                                                                                                                                                  |                   |
 | `messages?` | Controls the messages that are used for translations.                                                                                                                                            | `defaultMessages` |
 | `fluid?`    | By default the component has a max width set in accordance with HDS. If you want to ignore it, you can set this option to true, in which case the form will span with no `max-width` limitation. | `false`           |
+| `backendConfig?`    | The component provides a default backend that integrates it into Helsinki's Open311 based feedback system. If you want to use it, you have to provide this configuration object. You can find an example from storybook. |            |
+| `onSubmit?`    | If you do not want to use the default backend, you can use a custom one by providing `onSubmit`. |            |
 
 ### `defaultMessages`
 

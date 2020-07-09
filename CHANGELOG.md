@@ -14,3 +14,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Initial form elements
 - Support for basic internationalization
 - Form logic (data mapping, validation, error handling)
+- Integration to Helsinki's Open311 feedback system

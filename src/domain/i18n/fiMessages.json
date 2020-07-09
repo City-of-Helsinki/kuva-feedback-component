@@ -1,6 +1,8 @@
 {
   "form.title": "Anna palautetta",
   "form.description": "Anna palautetta verkkopalvelumme toiminnasta. Pyrimme vastaamaan viiden arkipäivän kuluessa. Voit lähettää viestisi nimettömänä. Jos haluat henkilökohtaisen vastauksen, jätä yhteistietosi.",
+  "form.title.success": "Kiitos palautteestasi!",
+  "form.description.success": "Pyrimme vastaamaan palautteeseesi mahdollisimman pian!",
   "form.section.feedback.title": "Palaute",
   "field.title.label": "Otsikko",
   "field.description.label": "Palaute",
@@ -16,6 +18,7 @@
   "field.lastName.label": "Sukunimi",
   "field.email.label": "Sähköpostiosoite",
   "form.doSendFeedback": "Lähetä palaute",
+  "form.doSendFeedback.error": "Lomakkeen lähetyksessä tapahtui virhe",
   "form.privacyWarning": "Koska tämän palautelomakkeen tietoturvaa ei ole varmistettu, palautteessanne ei ole syytä mainita esim. henkilötunnuksia, pankkitilin numeroja tai varallisuutta koskevia tietoja eikä myöskään arkaluontoisia tietoja kuten tietoja terveydentilasta tai asiakkuuteen liittyviä tietoja\nSähköinen viesti toimitetaan viranomaiselle lähettäjän omalla vastuulla (Laki sähköisestä asioinnista viranomaistoiminnassa 24.1.2003/13, 8 §). Jos asiakirjan toimittamiselle on asetettu määräaika, lähettäjän on huolehdittava siitä, että asiakirja saapuu viranomaiseen määräajassa (Hallintolaki 6.6.2003/434, 17 §).\nTämän vuoksi palauteviestinä ei tule lähettää esimerkiksi lakisääteisiä muistutuksia, kanteluja tai oikaisuvaatimuksia päätöksistä.",
   "form.privacyPolicy.link": "https://www.hel.fi/rekisteriseloste",
   "form.privacyPolicy.label": "Palautejärjestelmän rekisteriseloste",
