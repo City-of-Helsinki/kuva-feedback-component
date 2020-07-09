@@ -21,10 +21,12 @@ export function toSnakeCase(obj: Clean): Clean {
   const transformedObject = {};
 
   Object.entries(obj).forEach(([key, value]) => {
-    transformedObject[key] = value.replace(
+    const transformedKey = key.replace(
       /[A-Z]/g,
       (letter) => `_${letter.toLowerCase()}`
     );
+
+    transformedObject[transformedKey] = value;
   });
 
   return transformedObject as Clean;
@@ -36,10 +38,4 @@ export function clean<T extends Dirty, K extends Clean>(
   const cleanMessage = pipe(removeNull, toSnakeCase)(message.content) as K;
 
   return message.setContent(cleanMessage);
-}
-
-export function toUrlParams<T extends Clean>(
-  message: Message<T>
-): Message<URLSearchParams> {
-  return message.setContent(new URLSearchParams(message.content));
 }

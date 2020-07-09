@@ -1,5 +1,5 @@
 import Endpoint from "../api/Endpoint";
-import { toUrlParams } from "../api/utils";
+import Message from "../api/Message";
 import {
   Open311PostServiceRequestCamelCase,
   Open311PostServiceRequest,
@@ -7,6 +7,26 @@ import {
   Method,
 } from "../types";
 import postServiceRequestEndpointSchema from "./schemas";
+
+function toUrlParams(
+  message: Message<Open311PostServiceRequest>
+): Message<FormData> {
+  const formData = new FormData();
+
+  Object.entries(message.content).forEach(([key, value]) => {
+    if (typeof value === "string") {
+      formData.append(key, value);
+    } else if (Array.isArray(value)) {
+      value.forEach((valueItem) => {
+        if (valueItem instanceof File) {
+          formData.append(`${key}[]`, valueItem);
+        }
+      });
+    }
+  });
+
+  return message.setContent(formData);
+}
 
 class PostServiceRequestEndpoint extends Endpoint<
   Open311PostServiceRequestCamelCase,
@@ -17,7 +37,9 @@ class PostServiceRequestEndpoint extends Endpoint<
     super(
       Method.POST,
       url,
-      "application/x-www-form-urlencoded; charset=utf-8",
+      undefined,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       postServiceRequestEndpointSchema,
       toUrlParams
     );

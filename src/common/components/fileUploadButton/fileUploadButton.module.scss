@@ -1,0 +1,19 @@
+@import "~hds-core/lib/components/button/button";
+
+.button {
+  @extend .hds-button;
+  @extend .hds-button--secondary;
+}
+
+.label {
+  @extend .hds-button__label;
+}
+
+.icon {
+  @extend .hds-icon;
+}
+
+.icon svg {
+  max-height: 100%;
+  max-width: 100%;
+}

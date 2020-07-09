@@ -18,7 +18,7 @@ export type Open311PostServiceRequestCamelCase = {
   lastName: string | null;
   phone: string | null;
   mediaUrl: string | null;
-  media: string | null;
+  media: File[] | null;
 };
 
 export type Open311PostServiceRequest = {
@@ -35,7 +35,7 @@ export type Open311PostServiceRequest = {
   last_name?: string;
   phone?: string;
   media_url?: string;
-  media?: string;
+  media?: File[];
 };
 
 type Open311PostServiceResponse = {
@@ -81,5 +81,5 @@ export enum Method {
   DELETE = "DELETE",
 }
 
-export type Dirty = Record<string, string | null>;
-export type Clean = Record<string, string>;
+export type Dirty = Record<string, string | null | File[]>;
+export type Clean = Record<string, string | File[]>;

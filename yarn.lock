@@ -8283,7 +8283,7 @@ hastscript@^5.0.0:
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
 
-hds-core@0.11.3:
+hds-core@0.11.3, hds-core@^0.11.3:
   version "0.11.3"
   resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-0.11.3.tgz#db741a527c0485b010bc54cf70bd74edfd30aca0"
   integrity sha512-bC2gdcX7HCPk4xKuXKGkYMUesx0YF5EOD8el8mTw+3vZthViXV4Rv8EZjc3T9y5lXV4aBE6ePvuD8fY1r04fJQ==

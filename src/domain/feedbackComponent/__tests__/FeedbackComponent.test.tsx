@@ -27,7 +27,7 @@ describe("<FeedbackComponent />", () => {
   };
   const getWrapper = (props?: Partial<Props>) =>
     render(<FeedbackComponent {...defaultProps} {...props} />);
-  let consoleCache;
+  let consoleCache: Console;
 
   beforeAll(() => {
     consoleCache = global.console;
@@ -39,6 +39,11 @@ describe("<FeedbackComponent />", () => {
   });
 
   it("user can input expected information", () => {
+    const mediaFieldLabel = "Lisää tiedosto";
+    const mediaFieldFiles = [
+      new File([""], "file_1.png", { type: "image/png" }),
+      new File([""], "file_2.png", { type: "image/png" }),
+    ];
     const fields = [
       {
         label: "Otsikko",
@@ -48,6 +53,10 @@ describe("<FeedbackComponent />", () => {
         label: "Palaute*",
         value:
           "I use a screen reader to access the application and when I choose to delete my profile nothing happens!",
+      },
+      {
+        label: mediaFieldLabel,
+        value: mediaFieldFiles,
       },
       {
         label: "Etunimi tai nimimerkki",
@@ -62,7 +71,7 @@ describe("<FeedbackComponent />", () => {
         value: "NikicaMiletic@jourrapide.com",
       },
     ];
-    const { getByLabelText, getByDisplayValue } = getWrapper();
+    const { getByLabelText, getByDisplayValue, getByText } = getWrapper();
 
     // Reveal all fields
     fireEvent.click(getByLabelText("Haluan vastauksen palautteeseeni"));
@@ -70,13 +79,25 @@ describe("<FeedbackComponent />", () => {
     fields.forEach(({ label, value }) => {
       const input = getByLabelText(label);
 
-      fireEvent.change(input, {
-        target: {
-          value,
-        },
-      });
+      if (label === mediaFieldLabel && Array.isArray(value)) {
+        fireEvent.change(input, {
+          target: {
+            files: value,
+          },
+        });
 
-      expect(getByDisplayValue(value)).toBeDefined();
+        value.forEach((file) => {
+          expect(getByText(file.name)).toBeDefined();
+        });
+      } else if (typeof value === "string") {
+        fireEvent.change(input, {
+          target: {
+            value,
+          },
+        });
+
+        expect(getByDisplayValue(value)).toBeDefined();
+      }
     });
   });
 

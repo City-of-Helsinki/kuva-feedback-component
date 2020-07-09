@@ -1,0 +1,68 @@
+@import "~hds-design-tokens/lib/all.scss";
+
+.fileUploadFieldFile {
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 640px;
+
+    &:not(:last-child) {
+      margin-bottom: $spacing-s;
+    }
+  }
+
+  &Row {
+    display: flex;
+  }
+
+  &Info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-xs $spacing-s;
+
+    font-size: $fontsize-body-medium;
+
+    background: $color-success-light;
+  }
+
+  &Icon {
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $spacing-l;
+    height: $spacing-l;
+
+    color: $color-white;
+
+    border-radius: 100%;
+    background: $color-success;
+  }
+
+  &HelperText {
+    margin-top: $spacing-3-xs;
+  }
+
+  &WrapperInvalid {
+    & .fileUploadFieldFileInfo {
+      background: $color-error-light;
+    }
+    & .fileUploadFieldFileIcon {
+      background: $color-error;
+
+      & > svg {
+        position: relative;
+        top: -1px;
+
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    & .fileUploadFieldFileHelperText {
+      color: $color-error;
+    }
+  }
+}

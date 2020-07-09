@@ -44,9 +44,13 @@ class Endpoint<DirtyContent extends Dirty, Content extends Clean, Responses> {
   async makeRequest(message: Message<BodyInit | null>): Promise<Responses> {
     return fetch<Responses>(this.url, {
       method: this.method,
-      headers: {
-        "Content-type": this.contentType,
-      },
+      ...(this.contentType
+        ? {
+            headers: {
+              "Content-type": this.contentType,
+            },
+          }
+        : {}),
       body: message.content,
     });
   }

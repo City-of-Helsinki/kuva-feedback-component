@@ -8,7 +8,9 @@ type MessageSet = {
   "field.description.error.max": string;
   "field.description.error.required": string;
   "form.section.attachments.title": string;
-  "form.section.attachments.doAddFile": string;
+  "field.media.doAddFiles": string;
+  "field.media.doRemoveFile": string;
+  "field.media.error.tooLarge": string;
   "form.toggle.wantReply": string;
   "form.section.contactDetails.title": string;
   "field.firstName.label": string;

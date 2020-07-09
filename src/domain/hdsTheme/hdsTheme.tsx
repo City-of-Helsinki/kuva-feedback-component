@@ -1,10 +1,18 @@
 import React from "react";
-import { Button, IconUpload, TextInput, TextArea, Checkbox } from "hds-react";
+import {
+  Button,
+  TextInput,
+  TextArea,
+  Checkbox,
+  IconCrossCircle,
+} from "hds-react";
 
 import A from "../../common/components/a/A";
 import PlainList from "../../common/components/plainList/PlainList";
 import Text from "../../common/components/text/Text";
 import ErrorBox from "../../common/components/errorBox/ErrorBox";
+import FileUploadField from "../../common/components/fileUploadField/FileUploadField";
+import FileUploadButton from "../../common/components/fileUploadButton/FileUploadButton";
 import { FormTheme } from "../feedbackForm/types";
 import styles from "./hdsTheme.module.scss";
 
@@ -30,8 +38,10 @@ const hdsTheme: FormTheme = {
   TextInput: (props) => <TextInput {...props} />,
   TextArea: (props) => <TextArea {...props} />,
   Checkbox: (props) => <Checkbox {...props} />,
-  ButtonAddFile: (props) => (
-    <Button variant="secondary" iconLeft={<IconUpload />} {...props} />
+  FileUploadField: (props) => <FileUploadField {...props} />,
+  ButtonAddFiles: (props) => <FileUploadButton {...props} />,
+  ButtonRemoveFile: (props) => (
+    <Button variant="supplementary" iconLeft={<IconCrossCircle />} {...props} />
   ),
   ButtonSubmit: (props) => <Button type="submit" {...props} />,
   TextH1: (props) => <Text variant="h1" {...props} />,
