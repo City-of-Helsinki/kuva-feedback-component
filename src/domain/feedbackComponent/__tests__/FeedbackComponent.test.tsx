@@ -20,7 +20,7 @@ function submitForm(renderResult: RenderResult) {
   fireEvent.click(getByText("Lähetä palaute"));
 }
 
-describe("<FeedbackComponent />", () => {
+describe("<FeedbackComponent /> with defaults", () => {
   const defaultProps = {
     locale: "fi",
     onSubmit: () => Promise.resolve(),
@@ -44,6 +44,8 @@ describe("<FeedbackComponent />", () => {
       new File([""], "file_1.png", { type: "image/png" }),
       new File([""], "file_2.png", { type: "image/png" }),
     ];
+    // I've omitted testing service request type, because it'll require
+    // custom traversal logic.
     const fields = [
       {
         label: "Otsikko",

@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+import { ServiceRequestTypes } from "./constants";
+
 const MAX_FILE_SIZE = 5 * 1000000;
 
 const fileObject = yup
@@ -13,6 +15,10 @@ const fileObject = yup
   .test("fileType", "Unsupported File Format", () => true);
 
 export default yup.object({
+  serviceRequestType: yup
+    .string()
+    .oneOf(Object.values(ServiceRequestTypes))
+    .required("field.serviceRequestType.error.required"),
   title: yup.string().nullable(),
   description: yup
     .string()

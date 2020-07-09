@@ -4,10 +4,13 @@ import {
   ReactEventHandler,
   KeyboardEvent,
 } from "react";
+import { DropdownProps as HDSDropdownProps } from "hds-react";
 
 import { InputProps } from "../../common/components/formikWrappers/Input";
+import { ServiceRequestTypes } from "./constants";
 
 export interface FormValues {
+  serviceRequestType: ServiceRequestTypes;
   title: string | null;
   description: string;
   media: File[] | null;
@@ -37,6 +40,26 @@ export type FileUploadFieldProps = InputProps & {
   addFilesButtonLabel: string;
   removeFileButtonLabel: string;
   errors?: string[];
+};
+
+type SimulatedEvent = {
+  target: {
+    name: string;
+    value: string;
+  };
+};
+
+export type DropdownProps = Pick<
+  HDSDropdownProps,
+  "className" | "disabled" | "required" | "style" | "invalid"
+> & {
+  name: string;
+  id: string;
+  onChange: (e: SimulatedEvent) => void;
+  value: string;
+  helperText?: string | ReactNode;
+  labelText?: string | ReactNode;
+  options: Array<{ label: string; value: string }>;
 };
 
 export interface FormTheme {
@@ -69,6 +92,7 @@ export interface FormTheme {
     }
   >;
   FileUploadField: ComponentType<FileUploadFieldProps>;
+  Dropdown: ComponentType<DropdownProps>;
   ButtonAddFiles: ComponentType<ButtonAddFilesProps>;
   ButtonRemoveFile: ComponentType<ButtonRemoveFileProps>;
   ButtonSubmit: ComponentType<{

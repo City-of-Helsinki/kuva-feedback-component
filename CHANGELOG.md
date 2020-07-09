@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Integration to Helsinki's Open311 feedback system
 - Ability to theme component
 - Support for file upload
+- Mandatory service request type field
 
 ### Removed
 
