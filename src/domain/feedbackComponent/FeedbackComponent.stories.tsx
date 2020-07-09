@@ -91,14 +91,14 @@ const customTheme = {
     />
   ),
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  TextInput: ({ labelText, helperText = "", invalid, ...rest }) => (
+  TextInput: ({ labelText, helperText = "", invalid = false, ...rest }) => (
     <>
       <label htmlFor={rest.id}>{labelText}</label>
       <input type="text" {...rest} />
     </>
   ),
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  TextArea: ({ labelText, helperText = "", invalid, ...rest }) => (
+  TextArea: ({ labelText, helperText = "", invalid = false, ...rest }) => (
     <>
       <label htmlFor={rest.id}>{labelText}</label>
       <textarea {...rest} />
