@@ -1,4 +1,4 @@
-import React, { ComponentType } from "react";
+import React, { ComponentType, ReactEventHandler } from "react";
 
 import useField from "../../hooks/useField";
 
@@ -6,10 +6,13 @@ export type InputProps = {
   name: string;
   id: string;
   value: string;
-  invalid: boolean;
+  invalid?: boolean;
   helperText?: string;
   labelText: string;
   required?: boolean;
+  onChange?: ReactEventHandler<HTMLInputElement>;
+  onBlur?: ReactEventHandler<HTMLInputElement>;
+  onFocus?: ReactEventHandler<HTMLInputElement>;
 };
 
 type Props = {

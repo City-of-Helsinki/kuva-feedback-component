@@ -31,7 +31,7 @@ const postServiceRequestEndpointSchema = yup.object().shape(
     last_name: yup.string().nullable(),
     phone: yup.string().nullable(),
     media_url: yup.string().nullable(),
-    media: yup.string().nullable(),
+    media: yup.array(yup.mixed()).nullable(),
   },
   [["service_object_type", "service_object_id"]]
 );

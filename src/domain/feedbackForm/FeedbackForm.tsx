@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 
 import Input from "../../common/components/formikWrappers/Input";
+import FileUploadField from "../../common/components/formikWrappers/FileUploadField";
 import defaultInitialValues from "./defaultInitialValues";
 import useTranslation from "../i18n/useTranslation";
 import hdsTheme from "../hdsTheme/hdsTheme";
@@ -96,9 +97,16 @@ function FeedbackForm({
                   <Theme.TextP>
                     {t("form.section.attachments.description")}
                   </Theme.TextP>
-                  <Theme.ButtonAddFile>
-                    {t("form.section.attachments.doAddFile")}
-                  </Theme.ButtonAddFile>
+                  <FileUploadField
+                    name="media"
+                    id="media"
+                    labelText={t("field.firstName.label")}
+                    addFilesButtonLabel={t("field.media.doAddFiles")}
+                    removeFileButtonLabel={t("field.media.doRemoveFile")}
+                    addFilesButton={Theme.ButtonAddFiles}
+                    removeFileButton={Theme.ButtonRemoveFile}
+                    component={Theme.FileUploadField}
+                  />
                 </Theme.LabeledSection>
                 <Theme.Section>
                   <Theme.Checkbox

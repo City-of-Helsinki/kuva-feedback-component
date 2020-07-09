@@ -1,9 +1,9 @@
 # Mandatory include
 include:
-  - project: 'city-of-helsinki/kuva/ci-cd-config/ci-configuration'
+  - project: "city-of-helsinki/kuva/ci-cd-config/ci-configuration"
     ref: v2
-    file: '/.gitlab-ci-template.yml'
- 
+    file: "/.gitlab-ci-template.yml"
+
 # These variables are available for all stages
 variables:
   SERVICE_PORT: 3000
@@ -45,7 +45,7 @@ review:
   variables:
     POSTGRES_ENABLED: 0
     DOCKER_IMAGE_NAME: "$CI_PROJECT_NAME-review"
-  
+
 staging:
   # Runtime variables
   variables:
