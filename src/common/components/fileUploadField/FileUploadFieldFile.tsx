@@ -4,14 +4,15 @@ import { IconCheck, IconError } from "hds-react";
 import { FileUploadFieldProps } from "../../../domain/feedbackForm/types";
 import styles from "./fileUploadFieldFile.module.scss";
 
-function formatBytes(bytes: number, decimals = 2) {
-  const k = 1024;
+// https://stackoverflow.com/a/18650828
+function formatBits(bits: number, decimals = 2) {
+  const k = 1000;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+  const sizes = ["b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"];
 
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const i = Math.floor(Math.log(bits) / Math.log(k));
 
-  return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
+  return `${parseFloat((bits / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
 type Props = Pick<
@@ -33,7 +34,7 @@ function FileUploadFieldFile({
   removeFileButton: RemoveFileButton,
   removeFileButtonLabel,
 }: Props) {
-  const humanizedSize = formatBytes(size);
+  const humanizedSize = formatBits(size);
   const isInvalid = variant === "invalid";
 
   return (
