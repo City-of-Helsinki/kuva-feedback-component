@@ -23,6 +23,7 @@ export type Open311PostServiceRequest = {
   phone?: string;
   media_url?: string;
   media?: File[];
+  locale?: string;
 };
 
 type Open311PostServiceResponse = {
