@@ -9,6 +9,7 @@ import FeedbackForm, {
 import { FormValues } from "../feedbackForm/types";
 import { Open311BackendConfig } from "../open311Backend/types";
 import useSubmitMethod from "./useSubmitMethod";
+import { FeedbackComponentValues } from "./types";
 
 type InsertLocale = string | boolean;
 
@@ -27,7 +28,7 @@ function getInsertLocale(insertLocale: InsertLocale, locale: string) {
 export type Props = Omit<FeedbackFormProps, "onSubmit"> & {
   messages?: Messages;
   locale: string;
-  onSubmit?: (values: FormValues) => Promise<unknown>;
+  onSubmit?: (values: FeedbackComponentValues) => Promise<unknown>;
   backendConfig?: Open311BackendConfig;
   insertLocale?: InsertLocale;
 };

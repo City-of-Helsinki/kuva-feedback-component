@@ -53,7 +53,10 @@ interface Props {
   backendConfig?: Open311BackendConfig;
 }
 
-function useSubmitMethod({ backendConfig, onSubmit }: Props) {
+function useSubmitMethod({
+  backendConfig,
+  onSubmit,
+}: Props): (values: FeedbackComponentValues) => Promise<unknown> {
   const open311Backend = useOpen311Backend(backendConfig);
 
   const handleOpen311BackendSubmit = React.useCallback(
