@@ -1,13 +1,12 @@
 import { Schema } from "yup";
 
 import fetch from "../../../common/fetch/fetch";
-import { Method, Clean, Dirty } from "../types";
-import { clean } from "./utils";
+import { Method, MessageContent } from "../types";
 import Message from "./Message";
 
 type Transform<T> = (message: Message<T>) => Message<BodyInit | null>;
 
-class Endpoint<DirtyContent extends Dirty, Content extends Clean, Responses> {
+class Endpoint<Content extends MessageContent, Responses> {
   method: Method;
 
   url: string;
@@ -55,9 +54,9 @@ class Endpoint<DirtyContent extends Dirty, Content extends Clean, Responses> {
     });
   }
 
-  async call(message: Message<DirtyContent>): Promise<Responses> {
-    const cleanedMessage = clean<DirtyContent, Content>(message);
-    const validatedMessage = await this.validate(cleanedMessage);
+  async call(message: Message<Content>): Promise<Responses> {
+    // const cleanedMessage = clean<DirtyContent, Content>(message);
+    const validatedMessage = await this.validate(message);
     const transformedMessage = this.transform(validatedMessage);
 
     return this.makeRequest(transformedMessage);

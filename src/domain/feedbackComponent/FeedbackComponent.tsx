@@ -10,11 +10,26 @@ import { FormValues } from "../feedbackForm/types";
 import { Open311BackendConfig } from "../open311Backend/types";
 import useSubmitMethod from "./useSubmitMethod";
 
+type InsertLocale = string | boolean;
+
+function getInsertLocale(insertLocale: InsertLocale, locale: string) {
+  if (insertLocale === true) {
+    return locale;
+  }
+
+  if (typeof insertLocale === "string") {
+    return insertLocale;
+  }
+
+  return null;
+}
+
 export type Props = Omit<FeedbackFormProps, "onSubmit"> & {
   messages?: Messages;
   locale: string;
   onSubmit?: (values: FormValues) => Promise<unknown>;
   backendConfig?: Open311BackendConfig;
+  insertLocale?: InsertLocale;
 };
 
 function App({
@@ -22,6 +37,7 @@ function App({
   messages = defaultMessages,
   backendConfig,
   onSubmit,
+  insertLocale: externalInsertLocale = true,
   ...rest
 }: Props) {
   const submitMethod = useSubmitMethod({ backendConfig, onSubmit });
@@ -33,6 +49,12 @@ function App({
   }
 
   const handleOnSubmit = (values: FormValues) => {
+    const insertedLocale = getInsertLocale(externalInsertLocale, locale);
+
+    if (insertedLocale) {
+      return submitMethod({ ...values, locale: insertedLocale });
+    }
+
     return submitMethod(values);
   };
 

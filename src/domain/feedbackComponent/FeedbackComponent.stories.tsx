@@ -168,6 +168,16 @@ export const Playground = () => {
     display: "multi-select",
   });
   const initialValues = object("Initial values", {});
+  const insertLocale = select(
+    "Insert Locale",
+    {
+      'True (value of "locale")': true,
+      Finnish: "fi",
+      Swedish: "sv",
+      English: "en",
+    },
+    true
+  );
 
   return (
     <FeedbackComponent
@@ -177,6 +187,7 @@ export const Playground = () => {
       include={include || []}
       exclude={exclude || []}
       initialValues={initialValues}
+      insertLocale={insertLocale}
     />
   );
 };

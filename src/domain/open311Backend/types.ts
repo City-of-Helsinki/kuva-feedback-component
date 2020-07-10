@@ -7,22 +7,6 @@ export type Open311BackendConfig = {
   serviceCode: string;
 };
 
-export type Open311PostServiceRequestCamelCase = {
-  serviceRequestType: ServiceRequestTypes; // Probably CitySDK specific
-  description: string;
-  title: string | null; // CitySDK specific
-  lat: string | null;
-  serviceObjectType: string | null; // CitySDK specific
-  serviceObjectId: string | null; // CitySDK specific
-  addressString: string | null;
-  email: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  phone: string | null;
-  mediaUrl: string | null;
-  media: File[] | null;
-};
-
 export type Open311PostServiceRequest = {
   api_key: string;
   service_code: string;
@@ -39,6 +23,7 @@ export type Open311PostServiceRequest = {
   phone?: string;
   media_url?: string;
   media?: File[];
+  locale?: string;
 };
 
 type Open311PostServiceResponse = {
@@ -69,7 +54,7 @@ export type Open311PostServiceResponses =
 
 interface PostMethods {
   serviceRequest: (
-    values: Open311PostServiceRequestCamelCase
+    values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
   ) => Promise<Open311PostServiceResponses>;
 }
 
@@ -84,5 +69,4 @@ export enum Method {
   DELETE = "DELETE",
 }
 
-export type Dirty = Record<string, string | null | File[]>;
-export type Clean = Record<string, string | File[]>;
+export type MessageContent = Record<string, string | File[]>;

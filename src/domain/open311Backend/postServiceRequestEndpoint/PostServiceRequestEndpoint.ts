@@ -1,7 +1,6 @@
 import Endpoint from "../api/Endpoint";
 import Message from "../api/Message";
 import {
-  Open311PostServiceRequestCamelCase,
   Open311PostServiceRequest,
   Open311PostServiceResponses,
   Method,
@@ -29,7 +28,6 @@ function toUrlParams(
 }
 
 class PostServiceRequestEndpoint extends Endpoint<
-  Open311PostServiceRequestCamelCase,
   Open311PostServiceRequest,
   Open311PostServiceResponses
 > {

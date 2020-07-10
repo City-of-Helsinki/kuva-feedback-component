@@ -4,6 +4,7 @@ import { Formik, Form } from "formik";
 import Input from "../../common/components/formikWrappers/Input";
 import FileUploadField from "../../common/components/formikWrappers/FileUploadField";
 import Dropdown from "../../common/components/formikWrappers/Dropdown";
+import SectionToggle from "../../common/components/sectionToggle/SectionToggle";
 import defaultInitialValues from "./defaultInitialValues";
 import useTranslation from "../i18n/useTranslation";
 import hdsTheme from "../hdsTheme/hdsTheme";
@@ -34,6 +35,7 @@ export interface Props {
   theme?: FormTheme;
   include?: FormFields[];
   exclude?: FormFields[];
+  enableReinitialize?: boolean;
 }
 
 const allKeys: FormFields[] = Object.keys(defaultInitialValues) as FormFields[];
@@ -44,15 +46,9 @@ function FeedbackForm({
   theme: Theme = hdsTheme,
   include = allKeys,
   exclude = [],
+  enableReinitialize = false,
 }: Props) {
   const [t] = useTranslation();
-  const [showContactDetailFields, setShowContactDetailFields] = React.useState(
-    false
-  );
-
-  const handleWantReplyToggle = () => {
-    setShowContactDetailFields((value) => !value);
-  };
 
   const initialValues = {
     ...defaultInitialValues,
@@ -75,6 +71,7 @@ function FeedbackForm({
 
   return (
     <Formik
+      enableReinitialize={enableReinitialize}
       initialValues={initialValues}
       validationSchema={schema}
       onSubmit={(values, actions) => {
@@ -95,7 +92,7 @@ function FeedbackForm({
           });
       }}
     >
-      {({ status = {} }) => (
+      {({ status = {}, values }) => (
         <Theme.Page>
           {status.isSubmitSuccess ? (
             <Theme.SuccessContainer>
@@ -199,50 +196,53 @@ function FeedbackForm({
                   </Theme.LabeledSection>
                 )}
                 {getIsFieldUsed("firstName", "lastName", "email") && (
-                  <>
-                    <Theme.Section>
-                      <Theme.Checkbox
-                        name="want-reply"
-                        id="want-reply"
-                        checked={showContactDetailFields}
-                        onChange={handleWantReplyToggle}
-                        labelText={t("form.toggle.wantReply")}
-                      />
-                    </Theme.Section>
-                    {showContactDetailFields && (
-                      <Theme.LabeledSection>
-                        <Theme.TextH2>
-                          {t("form.section.contactDetails.title")}
-                        </Theme.TextH2>
-                        <Theme.FieldGrid>
-                          {getIsFieldUsed("firstName") && (
-                            <Input
-                              component={Theme.TextInput}
-                              name="firstName"
-                              id="firstName"
-                              labelText={t("field.firstName.label")}
-                            />
-                          )}
-                          {getIsFieldUsed("lastName") && (
-                            <Input
-                              component={Theme.TextInput}
-                              name="lastName"
-                              id="lastName"
-                              labelText={t("field.lastName.label")}
-                            />
-                          )}
-                          {getIsFieldUsed("email") && (
-                            <Input
-                              component={Theme.TextInput}
-                              name="email"
-                              id="email"
-                              labelText={t("field.email.label")}
-                            />
-                          )}
-                        </Theme.FieldGrid>
-                      </Theme.LabeledSection>
+                  <SectionToggle
+                    hasContentThatShouldBeVisible={Boolean(
+                      values.firstName || values.lastName || values.email
                     )}
-                  </>
+                    renderToggle={(props) => (
+                      <Theme.Section>
+                        <Theme.Checkbox
+                          {...props}
+                          name="want-reply"
+                          id="want-reply"
+                          labelText={t("form.toggle.wantReply")}
+                        />
+                      </Theme.Section>
+                    )}
+                  >
+                    <Theme.LabeledSection>
+                      <Theme.TextH2>
+                        {t("form.section.contactDetails.title")}
+                      </Theme.TextH2>
+                      <Theme.FieldGrid>
+                        {getIsFieldUsed("firstName") && (
+                          <Input
+                            component={Theme.TextInput}
+                            name="firstName"
+                            id="firstName"
+                            labelText={t("field.firstName.label")}
+                          />
+                        )}
+                        {getIsFieldUsed("lastName") && (
+                          <Input
+                            component={Theme.TextInput}
+                            name="lastName"
+                            id="lastName"
+                            labelText={t("field.lastName.label")}
+                          />
+                        )}
+                        {getIsFieldUsed("email") && (
+                          <Input
+                            component={Theme.TextInput}
+                            name="email"
+                            id="email"
+                            labelText={t("field.email.label")}
+                          />
+                        )}
+                      </Theme.FieldGrid>
+                    </Theme.LabeledSection>
+                  </SectionToggle>
                 )}
                 {status.isSubmitError && (
                   <Theme.ErrorBox label={t("form.doSendFeedback.error")}>

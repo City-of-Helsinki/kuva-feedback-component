@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for file upload
 - Mandatory service request type field
 - Configuration for including fields
+- Option to re-initialize form fields when initial values change
+
+### Changed
+
+- If user details are pre-filled, the contact details section is revealed by default
 
 ### Removed
 
