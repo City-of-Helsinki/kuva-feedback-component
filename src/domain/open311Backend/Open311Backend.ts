@@ -2,9 +2,9 @@
 import Message from "./api/Message";
 import PostServiceRequestEndpoint from "./postServiceRequestEndpoint/PostServiceRequestEndpoint";
 import {
-  Open311PostServiceRequestCamelCase,
   Open311BackendConfig,
   Open311BackendInterface,
+  Open311PostServiceRequest,
 } from "./types";
 
 class Open311Backend implements Open311BackendInterface {
@@ -15,11 +15,13 @@ class Open311Backend implements Open311BackendInterface {
   };
 
   post = {
-    serviceRequest: (values: Open311PostServiceRequestCamelCase) => {
+    serviceRequest: (
+      values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
+    ) => {
       const endpoint = this.endpoints.postServiceRequest;
-      const message = this.createMessage<Open311PostServiceRequestCamelCase>(
-        values
-      );
+      const message = this.createMessage<
+        Omit<Open311PostServiceRequest, "api_key" | "service_code">
+      >(values);
 
       return endpoint.call(message);
     },
