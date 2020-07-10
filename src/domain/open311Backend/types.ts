@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { ServiceRequestTypes } from "../feedbackForm/constants";
 
 export type Open311BackendConfig = {
   apiKey: string;
@@ -7,6 +8,7 @@ export type Open311BackendConfig = {
 };
 
 export type Open311PostServiceRequestCamelCase = {
+  serviceRequestType: ServiceRequestTypes; // Probably CitySDK specific
   description: string;
   title: string | null; // CitySDK specific
   lat: string | null;
@@ -24,6 +26,7 @@ export type Open311PostServiceRequestCamelCase = {
 export type Open311PostServiceRequest = {
   api_key: string;
   service_code: string;
+  service_request_type: ServiceRequestTypes; // Probably CitySDK specific
   description: string;
   title?: string; // CitySDK specific
   lat?: string;

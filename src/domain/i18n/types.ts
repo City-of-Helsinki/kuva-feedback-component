@@ -2,6 +2,13 @@ type MessageSet = {
   "form.title": string;
   "form.description": string;
   "form.section.feedback.title": string;
+  "field.serviceRequestType.label": string;
+  "field.serviceRequestType.option.blame": string;
+  "field.serviceRequestType.option.question": string;
+  "field.serviceRequestType.option.idea": string;
+  "field.serviceRequestType.option.accessibility": string;
+  "field.serviceRequestType.option.other": string;
+  "field.serviceRequestType.error.required": string;
   "field.title.label": string;
   "field.description.label": string;
   "field.description.error.min": string;

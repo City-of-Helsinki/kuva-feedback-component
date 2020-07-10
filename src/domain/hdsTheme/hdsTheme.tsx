@@ -13,6 +13,7 @@ import Text from "../../common/components/text/Text";
 import ErrorBox from "../../common/components/errorBox/ErrorBox";
 import FileUploadField from "../../common/components/fileUploadField/FileUploadField";
 import FileUploadButton from "../../common/components/fileUploadButton/FileUploadButton";
+import Dropdown from "../../common/components/dropdown/Dropdown";
 import { FormTheme } from "../feedbackForm/types";
 import styles from "./hdsTheme.module.scss";
 
@@ -39,6 +40,7 @@ const hdsTheme: FormTheme = {
   TextArea: (props) => <TextArea {...props} />,
   Checkbox: (props) => <Checkbox {...props} />,
   FileUploadField: (props) => <FileUploadField {...props} />,
+  Dropdown: (props) => <Dropdown {...props} />,
   ButtonAddFiles: (props) => <FileUploadButton {...props} />,
   ButtonRemoveFile: (props) => (
     <Button variant="supplementary" iconLeft={<IconCrossCircle />} {...props} />

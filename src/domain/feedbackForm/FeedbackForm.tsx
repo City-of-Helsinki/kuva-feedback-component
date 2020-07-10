@@ -3,11 +3,13 @@ import { Formik, Form } from "formik";
 
 import Input from "../../common/components/formikWrappers/Input";
 import FileUploadField from "../../common/components/formikWrappers/FileUploadField";
+import Dropdown from "../../common/components/formikWrappers/Dropdown";
 import defaultInitialValues from "./defaultInitialValues";
 import useTranslation from "../i18n/useTranslation";
 import hdsTheme from "../hdsTheme/hdsTheme";
 import { FormValues, FormTheme } from "./types";
 import schema from "./schema";
+import { ServiceRequestTypes } from "./constants";
 
 export interface Props {
   initialValues?: Partial<FormValues>;
@@ -75,6 +77,41 @@ function FeedbackForm({
                     {t("form.section.feedback.title")}
                   </Theme.TextH2>
                   <Theme.FieldGrid>
+                    <Dropdown
+                      component={Theme.Dropdown}
+                      id="serviceRequestType"
+                      name="serviceRequestType"
+                      labelText={t("field.serviceRequestType.label")}
+                      required
+                      options={[
+                        {
+                          value: ServiceRequestTypes.Thank,
+                          label: t("field.serviceRequestType.option.thank"),
+                        },
+                        {
+                          value: ServiceRequestTypes.Blame,
+                          label: t("field.serviceRequestType.option.blame"),
+                        },
+                        {
+                          value: ServiceRequestTypes.Question,
+                          label: t("field.serviceRequestType.option.question"),
+                        },
+                        {
+                          value: ServiceRequestTypes.Idea,
+                          label: t("field.serviceRequestType.option.idea"),
+                        },
+                        {
+                          value: ServiceRequestTypes.Accessibility,
+                          label: t(
+                            "field.serviceRequestType.option.accessibility"
+                          ),
+                        },
+                        {
+                          value: ServiceRequestTypes.Other,
+                          label: t("field.serviceRequestType.option.other"),
+                        },
+                      ]}
+                    />
                     <Input
                       component={Theme.TextInput}
                       name="title"

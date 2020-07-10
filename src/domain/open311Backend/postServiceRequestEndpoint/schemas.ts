@@ -1,9 +1,14 @@
 import * as yup from "yup";
 
+import { ServiceRequestTypes } from "../../feedbackForm/constants";
+
 const postServiceRequestEndpointSchema = yup.object().shape(
   {
     api_key: yup.string().required(),
     service_code: yup.string().required(),
+    service_request_type: yup
+      .string()
+      .oneOf(Object.values(ServiceRequestTypes)),
     description: yup.string().required().min(10).max(5000),
     title: yup.string().nullable(), // CitySDK specific
     lat: yup.string().nullable(),
