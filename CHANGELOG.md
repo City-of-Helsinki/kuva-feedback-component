@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Ability to theme component
 - Support for file upload
 - Mandatory service request type field
+- Configuration for including fields
 
 ### Removed
 

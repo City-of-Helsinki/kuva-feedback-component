@@ -1,5 +1,10 @@
 import React from "react";
-import { withKnobs, select, object } from "@storybook/addon-knobs";
+import {
+  withKnobs,
+  select,
+  object,
+  optionsKnob as option,
+} from "@storybook/addon-knobs";
 import {
   Props,
   Stories,
@@ -9,6 +14,8 @@ import {
 import { action } from "@storybook/addon-actions";
 
 import hdsTheme from "../hdsTheme/hdsTheme";
+import defaultInitialValues from "../feedbackForm/defaultInitialValues";
+import { FormFields } from "../feedbackForm/types";
 import FeedbackComponent from "./FeedbackComponent";
 
 // Sourced from https://dev.hel.fi/open311-test/v1/discovery.json
@@ -111,6 +118,14 @@ const themes = {
   custom: customTheme,
 };
 
+const fieldOptions = Object.keys(defaultInitialValues).reduce(
+  (obj, key) => ({
+    ...obj,
+    [key]: key,
+  }),
+  {}
+);
+
 export const Playground = () => {
   const locale = select(
     "Locale",
@@ -129,12 +144,27 @@ export const Playground = () => {
     },
     "hds"
   );
+  const include = option<FormFields[]>(
+    "Include",
+    fieldOptions,
+    Object.keys(fieldOptions) as FormFields[],
+    {
+      display: "multi-select",
+    }
+  );
+  const exclude = option<FormFields[]>("Exclude", fieldOptions, [], {
+    display: "multi-select",
+  });
+  const initialValues = object("Initial values", {});
 
   return (
     <FeedbackComponent
       locale={locale}
       onSubmit={() => Promise.resolve()}
       theme={themes[theme]}
+      include={include || []}
+      exclude={exclude || []}
+      initialValues={initialValues}
     />
   );
 };

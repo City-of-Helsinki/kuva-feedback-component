@@ -19,6 +19,8 @@ export interface FormValues {
   email: string | null;
 }
 
+export type FormFields = keyof FormValues;
+
 export type ButtonAddFilesProps = {
   children: ReactNode;
   onClick: ReactEventHandler<HTMLSpanElement>;
