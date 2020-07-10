@@ -18,7 +18,6 @@ export interface FormValues {
 
 export type ButtonAddFilesProps = {
   children: ReactNode;
-  onClick: ReactEventHandler<HTMLSpanElement>;
   onKeyPress: (e: KeyboardEvent<HTMLSpanElement>) => void;
   onKeyUp: (e: KeyboardEvent<HTMLSpanElement>) => void;
 };

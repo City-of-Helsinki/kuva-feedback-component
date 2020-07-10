@@ -75,7 +75,6 @@ function FileUploadField({
       <label htmlFor={id}>
         <Button
           aria-controls={id}
-          onClick={handleBeginFileSelect}
           onKeyPress={handleButtonEmulation}
           onKeyUp={handleButtonEmulation}
         >
