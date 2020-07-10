@@ -35,6 +35,7 @@ export interface Props {
   theme?: FormTheme;
   include?: FormFields[];
   exclude?: FormFields[];
+  enableReinitialize?: boolean;
 }
 
 const allKeys: FormFields[] = Object.keys(defaultInitialValues) as FormFields[];
@@ -45,6 +46,7 @@ function FeedbackForm({
   theme: Theme = hdsTheme,
   include = allKeys,
   exclude = [],
+  enableReinitialize = false,
 }: Props) {
   const [t] = useTranslation();
 
@@ -69,6 +71,7 @@ function FeedbackForm({
 
   return (
     <Formik
+      enableReinitialize={enableReinitialize}
       initialValues={initialValues}
       validationSchema={schema}
       onSubmit={(values, actions) => {
