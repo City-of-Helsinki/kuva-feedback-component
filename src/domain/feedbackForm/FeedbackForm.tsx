@@ -98,10 +98,10 @@ function FeedbackForm({
       {({ status = {} }) => (
         <Theme.Page>
           {status.isSubmitSuccess ? (
-            <>
+            <Theme.SuccessContainer>
               <Theme.TextH1>{t("form.title.success")}</Theme.TextH1>
               <Theme.TextP>{t("form.description.success")}</Theme.TextP>
-            </>
+            </Theme.SuccessContainer>
           ) : (
             <Form noValidate>
               <Theme.Container>

@@ -13,6 +13,12 @@
 
   &Row {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 
   &Info {
@@ -28,7 +34,7 @@
   }
 
   &Icon {
-    align-self: flex-end;
+    flex: 0 0 $spacing-l;
     display: flex;
     justify-content: center;
     align-items: center;

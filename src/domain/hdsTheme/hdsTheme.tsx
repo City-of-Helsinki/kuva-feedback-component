@@ -24,6 +24,7 @@ const hdsTheme: FormTheme = {
       {...props}
     />
   ),
+  SuccessContainer: (props) => <div {...props} />,
   Container: (props) => (
     <div className={styles.feedbackFormContainer} {...props} />
   ),

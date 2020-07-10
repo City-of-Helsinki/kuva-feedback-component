@@ -7,8 +7,8 @@ import "./index.css";
 
 const viewports = {
   ...INITIAL_VIEWPORTS,
-  narrow: {
-    name: "Narrow full-height (320px)",
+  mobile: {
+    name: "Mobile",
     styles: {
       width: "320px",
       height: "100%",
