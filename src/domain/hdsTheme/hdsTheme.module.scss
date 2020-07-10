@@ -2,23 +2,40 @@
 
 .feedbackForm {
   &Page {
-    padding-top: $spacing-xl;
+    padding: $spacing-s 0;
+    display: grid;
+    grid-template-columns: $spacing-2-xs [content] auto $spacing-2-xs;
+
+    & > *:first-child {
+      grid-column: content;
+    }
 
     &.maxWidth {
-      max-width: 768px;
-      margin: 0 auto;
+      grid-template-columns: minmax($spacing-2-xs, auto) [content] minmax(auto, 768px) minmax($spacing-2-xs, auto);
+    }
+
+    @media (min-width: 768px) {
+      padding: $spacing-xl 0;
     }
   }
 
   &Container {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: $spacing-3-xl;
+    grid-row-gap: $spacing-l;
+
+    @media (min-width: 768px) {
+      grid-row-gap: $spacing-3-xl;
+    }
   }
 
   &ControlGrid {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: $spacing-m;
+    grid-row-gap: $spacing-s;
+
+    @media (min-width: 768px) {
+      grid-row-gap: $spacing-m;
+    }
   }
 }

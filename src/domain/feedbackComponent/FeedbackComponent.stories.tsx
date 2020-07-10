@@ -87,6 +87,18 @@ export const PreFilled = () => (
   />
 );
 
+export const Mobile = () => (
+  <FeedbackComponent locale="fi" onSubmit={() => Promise.resolve()} />
+);
+
+Mobile.story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile",
+    },
+  },
+};
+
 const customTheme = {
   ...hdsTheme,
   Page: (props) => (

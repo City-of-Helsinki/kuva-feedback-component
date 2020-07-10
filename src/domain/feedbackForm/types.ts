@@ -66,6 +66,7 @@ export type DropdownProps = Pick<
 export interface FormTheme {
   Page: ComponentType;
   Container: ComponentType;
+  SuccessContainer: ComponentType;
   LabeledSection: ComponentType;
   Section: ComponentType;
   FieldGrid: ComponentType;
