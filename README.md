@@ -2,36 +2,75 @@
 
 **NOTE:** This project is currently being released in a temporary npm package until we have a first release candidate ready for publishing.
 
-Storybook for current release: [http://kuva-feedback-component.prod.kuva.hel.ninja/](http://kuva-feedback-component.prod.kuva.hel.ninja/)
-Storybook for current `develop`: [http://kuva-feedback-component.test.kuva.hel.ninja/](http://kuva-feedback-component.test.kuva.hel.ninja/)
+Demo: [http://kuva-feedback-component.prod.kuva.hel.ninja/](http://kuva-feedback-component.prod.kuva.hel.ninja/)
 
-## Commands
+## Quick Start
 
-| Name         | Purpose                                                                                                  | Useful Options                |
-| ------------ | -------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `yarn start` | Start storybook that points to `/src`. Useful for developers of this component.                          |                               |
-| `yarn lint`  | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
-| `yarn test`  | Runs local tests with jest.                                                                              | `--watch`: enable watch mode  |
-| `yarn build` | Builds application with rollup.                                                                          |                               |
+**Note:** This component uses `hds-react`, which injects some global styles for instance for headings. Be mindful of this if your application does not already use HDS. [174](https://github.com/City-of-Helsinki/helsinki-design-system/issues/174)  
 
-## Storybook
+**Note:** This component does not inject the Helsinki Grotesk font for you--you must add it yourself.
 
-The `yarn start` command will start `storybook` in port `6006`. When you make changes in `src`, they'll be automatically updated to `storybook`.
+### 1. Request API key
+Posting feedback requires an API key. Instructions for requesting and API key can be found from [here](https://dev.hel.fi/open311-test/v1/discovery.json).
 
-The `storybook` in this project is configured to build with a setup that mimics CRA.
+For requests made against the test API, you can find credentials from [here](https://dev.hel.fi/open311-test/v1/discovery.json).
 
-## Build
+### 2. Integrate component
 
-This project uses `rollup` for its final bundle.
+**Install it**
 
-## Releasing new versions
+```bash
+yarn add kuva-feedback-component-temp
+```
 
-A new version of the `npm` package is automatically released when a new release is created in GitHub. Additionally, a new canary release is created after each new push into develop.
+**Add it into your application**
 
-## Before taking into use
+`App.tsx`
 
-- This component uses `hds-react`, which injects some global styles for instance for headings. Be mindful of this if your application does not already use HDS. [174](https://github.com/City-of-Helsinki/helsinki-design-system/issues/174)
-- This component does not inject the Helsinki Grotesk font for you--you must add it yourself.
+```tsx
+// ...
+import { FeedbackComponent } from "kuva-feedback-component-temp";
+
+// ...
+
+const feedbackComponentBackendConfig = {
+  apiKey: "...",
+  // Location of feedback API
+  url: "...",
+  // Which service you want to send the feedback into. For instance KuVa
+  // has its own service code.
+  serviceCode: "...",
+};
+
+// ...
+
+function App() {
+  const { i18n } = useTranslate();
+
+  return (
+    <Switch>
+      <Route
+        exact
+        path="/feedback"
+        render={(props) => (
+          <FeedbackComponent
+            locale={i18n.locale}
+            backendConfig={feedbackComponentBackendConfig}
+          />
+        )}
+      />
+    </Switch>
+  );
+}
+```
+
+`Footer.tsx`
+
+```tsx
+// ...
+<Link path="/feedback">{t("footer.doGiveFeedback")}</Link>
+// ...
+```
 
 ## Module API
 
@@ -73,3 +112,28 @@ If some of the default translations do not suit your needs, you can always overw
 ### Adding new locales
 
 You can add new locales by overriding the default messages by using `FeedbackForm`'s `messages` prop. I recommend that you import `defaultMessages` from this package and extend it with your new locale. After the new locale is added, you can toggle the component to use it by simply changing the `locale` prop into that locale.
+
+## For Developers of Library
+
+_Demo for `develop` branch: [http://kuva-feedback-component.test.kuva.hel.ninja/](http://kuva-feedback-component.test.kuva.hel.ninja/)_
+
+| Name         | Purpose                                                                                                  | Useful Options                |
+| ------------ | -------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `yarn start` | Start storybook that points to `/src`. Useful for developers of this component.                          |                               |
+| `yarn lint`  | Lints the application to be according to quality standards (eslint) and formatting standards (prettier). | `--fix`: fix fixable problems |
+| `yarn test`  | Runs local tests with jest.                                                                              | `--watch`: enable watch mode  |
+| `yarn build` | Builds application with rollup.                                                                          |                               |
+
+### Storybook
+
+The `yarn start` command will start `storybook` in port `6006`. When you make changes in `src`, they'll be automatically updated to `storybook`.
+
+The `storybook` in this project is configured to build with a setup that mimics CRA.
+
+### Build
+
+This project uses `rollup` for its final bundle.
+
+### Releasing new versions
+
+A new version of the `npm` package is automatically released when a new release is created in GitHub. Additionally, a new canary release is created after each new push into develop.
