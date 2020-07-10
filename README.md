@@ -46,6 +46,8 @@ A new version of the `npm` package is automatically released when a new release 
 | `backendConfig?` | The component provides a default backend that integrates it into Helsinki's Open311 based feedback system. If you want to use it, you have to provide this configuration object. You can find an example from storybook.               |                   |
 | `onSubmit?`      | If you do not want to use the default backend, you can use a custom one by providing `onSubmit`.                                                                                                                                       |                   |
 | `theme?`         | By default this component is themed to match with HDS. If you do not want that, or you need to tweak the component due to some other reason, you can do it by providing a theme. You can use the `hdsTheme` as a basis for your tweak. | `hdsTheme`        |
+| `include?`         | Control which fields you want to include into the form. | `all fields`        |
+| `exclude?`         | Control fields that are excluded from the form. Fields are first included and then excluded. If you include and exclude the same field, it will be excluded. | `[]`        |
 
 ### `defaultMessages`
 

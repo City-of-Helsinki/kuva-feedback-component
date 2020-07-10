@@ -1,6 +1,7 @@
 import { ServiceRequestTypes } from "./constants";
+import { FormValues } from "./types";
 
-export default {
+const defaultInitialValues: FormValues = {
   serviceRequestType: ServiceRequestTypes.Other,
   title: null,
   description: "",
@@ -9,3 +10,5 @@ export default {
   lastName: null,
   email: null,
 };
+
+export default defaultInitialValues;
