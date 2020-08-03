@@ -150,23 +150,10 @@ const fieldOptions = Object.keys(defaultInitialValues).reduce(
 
 export const Playground = () => {
   const backendConfig = object("Backend Config", undefined);
-  const locale = select(
-    "Locale",
-    {
-      Finnish: "fi",
-      Swedish: "sv",
-      English: "en",
-    },
-    "fi"
-  );
-  const theme = select(
-    "Theme",
-    {
-      HDS: "hds",
-      Custom: "custom",
-    },
-    "hds"
-  );
+  const enableReinitialize = boolean("Enable Reinitialize", false);
+  const exclude = option<FormFields[]>("Exclude", fieldOptions, [], {
+    display: "multi-select",
+  });
   const include = option<FormFields[]>(
     "Include",
     fieldOptions,
@@ -175,9 +162,6 @@ export const Playground = () => {
       display: "multi-select",
     }
   );
-  const exclude = option<FormFields[]>("Exclude", fieldOptions, [], {
-    display: "multi-select",
-  });
   const initialValues = object("Initial values", defaultInitialValues);
   const insertLocale = select(
     "Insert Locale",
@@ -189,8 +173,24 @@ export const Playground = () => {
     },
     true
   );
-  const enableReinitialize = boolean("Enable Reinitialize", false);
+  const locale = select(
+    "Locale",
+    {
+      Finnish: "fi",
+      Swedish: "sv",
+      English: "en",
+    },
+    "fi"
+  );
   const messages = object("Messages", defaultMessages);
+  const theme = select(
+    "Theme",
+    {
+      HDS: "hds",
+      Custom: "custom",
+    },
+    "hds"
+  );
 
   return (
     <FeedbackComponent
