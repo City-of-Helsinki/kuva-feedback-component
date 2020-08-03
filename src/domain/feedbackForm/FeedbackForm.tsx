@@ -16,11 +16,11 @@ function assertFieldsConfigurations(
   excludedFields: FormFields[],
   initialValues: FormValues
 ) {
-  excludedFields.forEach((field) => {
+  excludedFields.forEach(async (field) => {
     const value = initialValues[field];
-    const isNotValid = schema.fields[field].isValid(value);
+    const isValid = await schema.fields[field].isValid(value);
 
-    if (isNotValid) {
+    if (!isValid) {
       // eslint-disable-next-line no-console
       console.warn(
         `You have toggled off the ${field} field and not provided a valid default value for it. This means the user won't ever be able to submit the form successfully.`
