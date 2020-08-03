@@ -4,6 +4,7 @@ import {
   select,
   object,
   optionsKnob as option,
+  boolean,
 } from "@storybook/addon-knobs";
 import {
   Props,
@@ -16,6 +17,7 @@ import { action } from "@storybook/addon-actions";
 import hdsTheme from "../hdsTheme/hdsTheme";
 import defaultInitialValues from "../feedbackForm/defaultInitialValues";
 import { FormFields } from "../feedbackForm/types";
+import defaultMessages from "../i18n/defaultMessages";
 import FeedbackComponent from "./FeedbackComponent";
 
 // Sourced from https://dev.hel.fi/open311-test/v1/discovery.json
@@ -46,11 +48,19 @@ export const Default = () => {
   const backendConfig = object("Backend Config", {
     apiKey: TEST_OPEN_311_API_KEY,
     url: "https://dev.hel.fi/open311-test",
-    // Other issue to be fixed
     serviceCode: "180",
   });
+  const locale = select(
+    "Locale",
+    {
+      Finnish: "fi",
+      Swedish: "sv",
+      English: "en",
+    },
+    "fi"
+  );
 
-  return <FeedbackComponent locale="fi" backendConfig={backendConfig} />;
+  return <FeedbackComponent locale={locale} backendConfig={backendConfig} />;
 };
 
 export const CustomBackend = () => {
@@ -139,6 +149,7 @@ const fieldOptions = Object.keys(defaultInitialValues).reduce(
 );
 
 export const Playground = () => {
+  const backendConfig = object("Backend Config", undefined);
   const locale = select(
     "Locale",
     {
@@ -167,7 +178,7 @@ export const Playground = () => {
   const exclude = option<FormFields[]>("Exclude", fieldOptions, [], {
     display: "multi-select",
   });
-  const initialValues = object("Initial values", {});
+  const initialValues = object("Initial values", defaultInitialValues);
   const insertLocale = select(
     "Insert Locale",
     {
@@ -178,9 +189,12 @@ export const Playground = () => {
     },
     true
   );
+  const enableReinitialize = boolean("Enable Reinitialize", false);
+  const messages = object("Messages", defaultMessages);
 
   return (
     <FeedbackComponent
+      backendConfig={backendConfig}
       locale={locale}
       onSubmit={() => Promise.resolve()}
       theme={themes[theme]}
@@ -188,6 +202,8 @@ export const Playground = () => {
       exclude={exclude || []}
       initialValues={initialValues}
       insertLocale={insertLocale}
+      enableReinitialize={enableReinitialize}
+      messages={messages}
     />
   );
 };
