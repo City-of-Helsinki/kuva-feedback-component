@@ -52,14 +52,10 @@ export type Open311PostServiceResponses =
   | ServiceCodeNotFoundError
   | JurisdictionIdNotFoundError;
 
-interface ServiceRequest {
-  post: (
+export interface Open311BackendInterface {
+  postServiceRequest: (
     values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
   ) => Promise<Open311PostServiceResponses>;
-}
-
-export interface Open311BackendInterface {
-  serviceRequest: ServiceRequest;
 }
 
 export enum Method {

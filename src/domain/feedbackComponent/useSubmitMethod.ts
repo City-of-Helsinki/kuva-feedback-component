@@ -63,7 +63,7 @@ function useSubmitMethod({
     (feedbackComponentValues: FeedbackComponentValues) => {
       const postServiceRequest = clean(feedbackComponentValues);
 
-      return open311Backend.post.serviceRequest(postServiceRequest);
+      return open311Backend.postServiceRequest(postServiceRequest);
     },
     [open311Backend]
   );

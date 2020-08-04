@@ -16,19 +16,6 @@ class Open311Backend implements Open311BackendInterface {
     postServiceRequest: PostServiceRequestEndpoint;
   };
 
-  serviceRequest = {
-    post: (
-      values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
-    ) => {
-      const endpoint = this.endpoints.postServiceRequest;
-
-      return this.call<
-        Omit<Open311PostServiceRequest, "api_key" | "service_code">,
-        Open311PostServiceResponses
-      >(endpoint, values);
-    },
-  };
-
   constructor(config: Open311BackendConfig) {
     this.config = config;
 
@@ -64,6 +51,17 @@ class Open311Backend implements Open311BackendInterface {
       headers: endpoint.headers,
       body: preparedContent,
     });
+  }
+
+  postServiceRequest(
+    values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
+  ) {
+    const endpoint = this.endpoints.postServiceRequest;
+
+    return this.call<
+      Omit<Open311PostServiceRequest, "api_key" | "service_code">,
+      Open311PostServiceResponses
+    >(endpoint, values);
   }
 }
 

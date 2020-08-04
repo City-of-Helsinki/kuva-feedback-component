@@ -6,6 +6,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 
+import Open311Backend from "../../open311Backend/Open311Backend";
 import FeedbackComponent, { Props } from "../FeedbackComponent";
 
 function submitForm(renderResult: RenderResult) {
@@ -106,8 +107,9 @@ describe("<FeedbackComponent /> with defaults", () => {
     });
 
     it("user sees success view when submit succeeds", async () => {
+      const onSubmit = jest.fn(() => Promise.resolve());
       const renderResult = getWrapper({
-        onSubmit: () => Promise.resolve(),
+        onSubmit,
       });
 
       submitForm(renderResult);
@@ -115,6 +117,7 @@ describe("<FeedbackComponent /> with defaults", () => {
       await waitFor(() =>
         expect(renderResult.getByText("Kiitos palautteestasi!")).toBeDefined()
       );
+      expect(onSubmit).toHaveBeenCalledTimes(1);
     });
 
     it("user sees error message when submit fails", async () => {
@@ -135,6 +138,16 @@ describe("<FeedbackComponent /> with defaults", () => {
   });
 
   describe("developer interaction", () => {
+    it("throws an error when both backendConfig and onSubmit are missing", () => {
+      expect(() => {
+        getWrapper({
+          onSubmit: undefined,
+        });
+      }).toThrowErrorMatchingInlineSnapshot(
+        `"You must provide either a configuration object for the default backend, or implement a backend yourself by providing the onSubmit prop."`
+      );
+    });
+
     it("logs warning when a required field is excluded without a valid value", async () => {
       getWrapper({
         exclude: ["description"],
@@ -151,6 +164,42 @@ describe("<FeedbackComponent /> with defaults", () => {
       expect(global.console.warn.mock.calls[0][0]).toMatchInlineSnapshot(
         `"You have toggled off the description field and not provided a valid default value for it. This means the user won't ever be able to submit the form successfully."`
       );
+    });
+  });
+
+  describe("internal", () => {
+    it("should clean form values before sending them to the Open311 backend", async () => {
+      const spy = jest
+        .spyOn(Open311Backend.prototype, "postServiceRequest")
+        .mockImplementation(() =>
+          Promise.resolve({
+            service_request_id: "1",
+            service_notice: "",
+          })
+        );
+
+      const renderResult = getWrapper({
+        backendConfig: {
+          apiKey: "1234",
+          serviceCode: "1",
+          url: "hhhh",
+        },
+        onSubmit: undefined,
+      });
+
+      submitForm(renderResult);
+
+      await waitFor(() => {
+        expect(spy.mock.calls[0][0]).toMatchInlineSnapshot(`
+          Object {
+            "description": "Test feedback content",
+            "locale": "fi",
+            "service_request_type": "OTHER",
+          }
+        `);
+      });
+
+      jest.restoreAllMocks();
     });
   });
 });
