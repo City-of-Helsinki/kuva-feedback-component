@@ -1,18 +1,12 @@
-import Endpoint from "../api/Endpoint";
-import Message from "../api/Message";
-import {
-  Open311PostServiceRequest,
-  Open311PostServiceResponses,
-  Method,
-} from "../types";
+/* eslint-disable class-methods-use-this */
+import Endpoint from "../Endpoint";
+import { Open311PostServiceRequest, Method } from "../types";
 import postServiceRequestEndpointSchema from "./schemas";
 
-function toUrlParams(
-  message: Message<Open311PostServiceRequest>
-): Message<FormData> {
+function toUrlParams(content: Open311PostServiceRequest): FormData {
   const formData = new FormData();
 
-  Object.entries(message.content).forEach(([key, value]) => {
+  Object.entries(content).forEach(([key, value]) => {
     if (typeof value === "string") {
       formData.append(key, value);
     } else if (Array.isArray(value)) {
@@ -24,23 +18,24 @@ function toUrlParams(
     }
   });
 
-  return message.setContent(formData);
+  return formData;
 }
 
-class PostServiceRequestEndpoint extends Endpoint<
-  Open311PostServiceRequest,
-  Open311PostServiceResponses
-> {
+class PostServiceRequestEndpoint extends Endpoint<Open311PostServiceRequest> {
   constructor(url: string) {
-    super(
-      Method.POST,
-      url,
-      undefined,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      postServiceRequestEndpointSchema,
-      toUrlParams
-    );
+    super(Method.POST, url, undefined);
+  }
+
+  async validate(
+    content: Open311PostServiceRequest
+  ): Promise<Open311PostServiceRequest> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return postServiceRequestEndpointSchema.validate(content);
+  }
+
+  transform(content: Open311PostServiceRequest): BodyInit | null {
+    return toUrlParams(content);
   }
 }
 
