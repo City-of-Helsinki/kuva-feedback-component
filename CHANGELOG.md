@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Configuration for including fields
 - Option to re-initialize form fields when initial values change
 - Quick start guide
+- Translations for Swedish and English
 
 ### Changed
 
