@@ -125,7 +125,7 @@ describe("<FeedbackComponent /> with defaults", () => {
 
     await waitFor(() => {
       expect(
-        renderResult.getByText("Lomakkeen lähetyksessä tapahtui virhe")
+        renderResult.getByText("Lomakkeen lähetys epäonnistui virheen takia")
       ).toBeDefined();
       expect(renderResult.getByText(error)).toBeDefined();
     });
