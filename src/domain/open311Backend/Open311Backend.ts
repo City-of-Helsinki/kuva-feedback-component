@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
-import Message from "./api/Message";
+import fetch from "../../common/fetch/fetch";
+import Endpoint from "./Endpoint";
 import PostServiceRequestEndpoint from "./postServiceRequestEndpoint/PostServiceRequestEndpoint";
 import {
   Open311BackendConfig,
   Open311BackendInterface,
   Open311PostServiceRequest,
+  Open311PostServiceResponses,
 } from "./types";
 
 class Open311Backend implements Open311BackendInterface {
@@ -12,19 +14,6 @@ class Open311Backend implements Open311BackendInterface {
 
   private endpoints: {
     postServiceRequest: PostServiceRequestEndpoint;
-  };
-
-  post = {
-    serviceRequest: (
-      values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
-    ) => {
-      const endpoint = this.endpoints.postServiceRequest;
-      const message = this.createMessage<
-        Omit<Open311PostServiceRequest, "api_key" | "service_code">
-      >(values);
-
-      return endpoint.call(message);
-    },
   };
 
   constructor(config: Open311BackendConfig) {
@@ -37,24 +26,42 @@ class Open311Backend implements Open311BackendInterface {
     };
   }
 
-  private createMessage<T>(
+  private inject<T>(
     values: T
-  ): Message<
-    T & {
-      api_key: string;
-      service_code: string;
-    }
-  > {
-    return new Message<
-      T & {
-        api_key: string;
-        service_code: string;
-      }
-    >({
+  ): T & {
+    api_key: string;
+    service_code: string;
+  } {
+    return {
       ...values,
       api_key: this.config.apiKey,
       service_code: this.config.serviceCode,
+    };
+  }
+
+  private async call<Content, Response>(
+    endpoint: Endpoint<Content>,
+    content: Content
+  ): Promise<Response> {
+    const injectedContent = this.inject(content);
+    const preparedContent = await endpoint.prepareContent(injectedContent);
+
+    return fetch(endpoint.url, {
+      method: endpoint.method,
+      headers: endpoint.headers,
+      body: preparedContent,
     });
+  }
+
+  postServiceRequest(
+    values: Omit<Open311PostServiceRequest, "api_key" | "service_code">
+  ) {
+    const endpoint = this.endpoints.postServiceRequest;
+
+    return this.call<
+      Omit<Open311PostServiceRequest, "api_key" | "service_code">,
+      Open311PostServiceResponses
+    >(endpoint, values);
   }
 }
 
