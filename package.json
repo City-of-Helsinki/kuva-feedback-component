@@ -84,7 +84,7 @@
     "react-dom": "^16.8.0"
   },
   "dependencies": {
-    "formik": "^2.1.4",
+    "formik": "^2.4.5",
     "hds-design-tokens": "^0.11.3",
     "hds-react": "^0.11.3",
     "whatwg-fetch": "^3.1.0",
